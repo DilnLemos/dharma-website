@@ -341,7 +341,7 @@ El Hero debe transmitir inmediatamente:
 
 ## Título de sección
 
-**01 — QUIÉNES SOMOS**
+**QUIÉNES SOMOS**
 
 ## Título principal
 
