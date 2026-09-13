@@ -1,16 +1,13 @@
 const WHATSAPP_URL = "https://wa.me/573148331777";
 
-const DAYS = [
-  "Lunes",
-  "Martes",
-  "Miércoles",
-  "Jueves",
-  "Viernes",
-];
+const DAYS = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
 
 export default function Schedule() {
   return (
-    <section id="horarios" className="bg-bg border-border border-y py-20 sm:py-28">
+    <section
+      id="horarios"
+      className="bg-bg border-border border-y py-20 sm:py-28"
+    >
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <div>
@@ -25,8 +22,8 @@ export default function Schedule() {
               Entrena a tu hora.
             </h2>
             <p className="text-fg-muted mt-6 max-w-md text-base leading-7 sm:text-lg">
-              Encuentra un momento para entrenar todos los días en Dharma.
-              Elige la jornada que mejor se adapte a tu ritmo.
+              Encuentra un momento para entrenar todos los días en Dharma. Elige
+              la jornada que mejor se adapte a tu ritmo.
             </p>
 
             <a
@@ -70,14 +67,14 @@ export default function Schedule() {
                 </span>
               </div>
               <div className="grid grid-cols-5 gap-x-4">
-                  {DAYS.map((day) => (
-                    <div
-                      key={day}
-                      className="border-border text-lime border-t py-4 text-sm"
-                    >
-                      {day}
-                    </div>
-                  ))}
+                {DAYS.map((day) => (
+                  <div
+                    key={day}
+                    className="border-border text-lime border-t py-4 text-sm"
+                  >
+                    {day}
+                  </div>
+                ))}
               </div>
             </div>
           </div>

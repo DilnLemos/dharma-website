@@ -1,5 +1,3 @@
 export default function Training() {
-  return (
-    <div>training</div>
-  )
+  return <div>training</div>;
 }
