@@ -27,7 +27,7 @@ export default function Hero() {
         className="from-bg via-bg/40 absolute inset-0 bg-linear-to-t to-transparent"
       />
 
-      <div className="relative mx-auto w-full max-w-7xl px-5 pt-28 pb-16 sm:pb-20 lg:px-8 lg:pt-32 lg:pb-28">
+      <div className="relative mx-auto w-full max-w-7xl px-5 pt-28 pb-12 sm:pb-16 lg:px-8 lg:pt-32 lg:pb-20">
         <div className="motion-safe:animate-rise max-w-2xl">
           <p className="font-display text-fg-muted flex items-center gap-3 text-sm font-medium tracking-[0.2em] uppercase">
             <span
@@ -42,11 +42,11 @@ export default function Hero() {
           </p>
 
           <h1 className="font-display text-fg mt-2 text-5xl leading-[0.9] font-bold tracking-tight uppercase sm:text-7xl lg:text-8xl">
-            Supera tus límites.
+            Eres tú <br></br>contra ti.
           </h1>
 
           <p className="text-fg-muted mt-5 max-w-xl text-base sm:text-lg">
-            CrossFit y entrenamiento funcional en Roldanillo
+            Tiempo para todo, menos para rendirte.
           </p>
 
           <p className="text-fg mt-6 flex items-center gap-2 text-sm sm:text-base">

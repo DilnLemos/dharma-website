@@ -90,13 +90,13 @@ Los siguientes colores representan la dirección visual propuesta y deben entend
 
 | Rol | Color de referencia | Uso |
 |---|---|---|
-| Fondo principal | `#080A0A` | Fondo general, secciones oscuras |
-| Azul/petróleo profundo | `#062C3B` | Secciones secundarias y detalles |
-| Verde lima Dharma | `#B7D900` | CTA, acentos, destacados, interacción |
-| Verde oscuro | `#718700` | Variaciones sutiles del acento |
-| Blanco | `#F5F5F5` | Titulares y texto principal |
-| Gris secundario | `#A5A9A8` | Texto auxiliar |
-| Gris/borde oscuro | `#222727` | Bordes, separadores y tarjetas |
+| Fondo principal | #080A0A | Fondo general, secciones oscuras |
+| Azul/petróleo profundo | #062C3B | Secciones secundarias y detalles |
+| Verde lima Dharma | #B7D900 | CTA, acentos, destacados, interacción |
+| Verde oscuro | #718700 | Variaciones sutiles del acento |
+| Blanco | #F5F5F5 | Titulares y texto principal |
+| Gris secundario | #A5A9A8 | Texto auxiliar |
+| Gris/borde oscuro | #222727 | Bordes, separadores y tarjetas |
 
 ### Regla general de contraste
 
@@ -341,7 +341,7 @@ El Hero debe transmitir inmediatamente:
 
 ## Título de sección
 
-**01 — QUIÉNES SOMOS**
+**QUIÉNES SOMOS**
 
 ## Título principal
 
@@ -788,8 +788,8 @@ Las tarjetas deben utilizar:
 
 Referencia:
 
-- Fondo aproximado: `#0D1111`.
-- Borde aproximado: `#222727`.
+- Fondo aproximado: #0D1111.
+- Borde aproximado: #222727`.
 - Hover: borde en verde lima.
 - Elevación visual mínima.
 
