@@ -1,6 +1,5 @@
 import DharmaHero from "@/assets/DharmaHero.webp";
-
-const WHATSAPP_URL = "https://wa.me/573148331777";
+import { WHATSAPP_URL } from "@/utils";
 
 export default function Hero() {
   return (

@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
-
 import DharmaLogo from "@/assets/DharmaLogo.jpg";
+import { WHATSAPP_URL } from "@/utils";
+import { useEffect, useRef, useState } from "react";
 
 const NAV_ITEMS = [
   { label: "Inicio", href: "#inicio" },
@@ -10,8 +10,6 @@ const NAV_ITEMS = [
   { label: "Galería", href: "#galeria" },
   { label: "Contacto", href: "#contacto" },
 ] as const;
-
-const WHATSAPP_URL = "https://wa.me/573148331777";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
