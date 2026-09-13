@@ -96,13 +96,13 @@ export default function About() {
 
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-x-[-20%] bottom-[-2%] z-20 h-40 bg-linear-to-t from-bg via-bg/85 to-transparent blur-[5px]"
+            className="from-bg via-bg/85 pointer-events-none absolute inset-x-[-20%] bottom-[-2%] z-20 h-40 bg-linear-to-t to-transparent blur-[5px]"
           />
 
           <img
             src={Persona1}
             alt="Miembro de la comunidad Dharma CrossFit en una sesión de entrenamiento en el box"
-            className="absolute bottom-0 right-[60%] z-1 h-[95%] w-auto rotate-2"
+            className="absolute right-[60%] bottom-0 z-1 h-[95%] w-auto rotate-2"
             width={1080}
             height={1350}
             loading="lazy"

@@ -1,8 +1,35 @@
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { useEffect, useState } from "react";
+
 import { WHATSAPP_URL } from "@/utils";
 
 const DAYS = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
+const MORNING_SCHEDULES = ["07:00 — 08:00", "08:00 — 09:00", "09:00 — 10:00"];
+const AFTERNOON_SCHEDULES = [
+  "03:00 — 04:00",
+  "04:00 — 05:00",
+  "05:00 — 06:00",
+  "06:00 — 07:00",
+  "07:00 — 08:00",
+];
 
 export default function Schedule() {
+  const [scheduleIndex, setScheduleIndex] = useState(0);
+  const shouldReduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setScheduleIndex((currentIndex) => currentIndex + 1);
+    }, 3500);
+
+    return () => window.clearInterval(intervalId);
+  }, []);
+
+  const morningSchedule =
+    MORNING_SCHEDULES[scheduleIndex % MORNING_SCHEDULES.length];
+  const afternoonSchedule =
+    AFTERNOON_SCHEDULES[scheduleIndex % AFTERNOON_SCHEDULES.length];
+
   return (
     <section
       id="horarios"
@@ -19,11 +46,11 @@ export default function Schedule() {
               Horarios
             </p>
             <h2 className="font-display text-fg mt-5 max-w-lg text-5xl leading-[0.9] font-bold tracking-tight uppercase sm:text-7xl">
-              Entrena a tu hora.
+              Encuentra tu horario.
             </h2>
             <p className="text-fg-muted mt-6 max-w-md text-base leading-7 sm:text-lg">
-              Encuentra un momento para entrenar todos los días en Dharma. Elige
-              la jornada que mejor se adapte a tu ritmo.
+              Las clases tienen una duración de 1 hora. Elige el horario que
+              mejor se adapte a tu ritmo.
             </p>
 
             <a
@@ -42,17 +69,39 @@ export default function Schedule() {
                 <p className="font-display text-fg-muted text-sm font-semibold tracking-[0.18em] uppercase">
                   Mañana
                 </p>
-                <p className="font-display text-lime mt-3 text-4xl font-bold tracking-tight sm:text-5xl">
-                  07:00 — 09:00
-                </p>
+                <div className="mt-3 min-h-12 sm:min-h-15">
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.p
+                      key={morningSchedule}
+                      initial={shouldReduceMotion ? false : { opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={shouldReduceMotion ? undefined : { opacity: 0 }}
+                      transition={{ duration: 0.5, ease: "easeInOut" }}
+                      className="font-display text-lime text-4xl font-bold tracking-tight sm:text-5xl"
+                    >
+                      {morningSchedule}
+                    </motion.p>
+                  </AnimatePresence>
+                </div>
               </div>
               <div className="p-6 sm:p-8">
                 <p className="font-display text-fg-muted text-sm font-semibold tracking-[0.18em] uppercase">
                   Tarde
                 </p>
-                <p className="font-display text-lime mt-3 text-4xl font-bold tracking-tight sm:text-5xl">
-                  03:00 — 07:00
-                </p>
+                <div className="mt-3 min-h-12 sm:min-h-15">
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.p
+                      key={afternoonSchedule}
+                      initial={shouldReduceMotion ? false : { opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={shouldReduceMotion ? undefined : { opacity: 0 }}
+                      transition={{ duration: 0.5, ease: "easeInOut" }}
+                      className="font-display text-lime text-4xl font-bold tracking-tight sm:text-5xl"
+                    >
+                      {afternoonSchedule}
+                    </motion.p>
+                  </AnimatePresence>
+                </div>
               </div>
             </div>
 
