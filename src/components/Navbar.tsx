@@ -1,6 +1,6 @@
+import { useEffect, useRef, useState } from "react";
 import DharmaLogo from "@/assets/DharmaLogo.jpg";
 import { WHATSAPP_URL } from "@/utils";
-import { useEffect, useRef, useState } from "react";
 
 const NAV_ITEMS = [
   { label: "Inicio", href: "#inicio" },
