@@ -1,3 +1,5 @@
+import { motion } from "motion/react";
+
 import Persona1 from "@/assets/Persona1.webp";
 import Persona2 from "@/assets/Persona2.webp";
 import Persona3 from "@/assets/Persona3.webp";
@@ -40,7 +42,7 @@ export default function About() {
   return (
     <section
       id="nosotros"
-      className="pt-10 pb-20 sm:pt-14 sm:pb-28 lg:pt-20 lg:pb-32"
+      className="overflow-x-clip pt-10 pb-20 sm:pt-14 sm:pb-28 lg:pt-20 lg:pb-32"
     >
       <div className="mx-auto grid max-w-7xl gap-16 px-5 lg:grid-cols-2 lg:items-center lg:gap-20 lg:px-8">
         <div>
@@ -99,29 +101,45 @@ export default function About() {
             className="from-bg via-bg/85 pointer-events-none absolute inset-x-[-20%] bottom-[-2%] z-20 h-40 bg-linear-to-t to-transparent blur-[5px]"
           />
 
-          <img
+          <motion.img
             src={Persona1}
             alt="Miembro de la comunidad Dharma CrossFit en una sesión de entrenamiento en el box"
-            className="absolute right-[60%] bottom-0 z-1 h-[95%] w-auto rotate-2"
+            className="absolute bottom-0 left-[-8%] z-1 h-[90%] w-auto rotate-2 sm:right-[60%] sm:left-auto sm:h-[95%]"
             width={1080}
             height={1350}
             loading="lazy"
+            initial={{ opacity: 0, y: 32, scale: 0.97 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           />
-          <img
+          <motion.img
             src={Persona2}
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
-            className="absolute bottom-[-10%] left-[-10%] z-10 h-full w-auto"
+            className="absolute bottom-[-5%] left-0 z-10 h-[90%] w-auto sm:bottom-[-10%] sm:left-[-10%] sm:h-full"
             width={1080}
             height={2196}
             loading="lazy"
+            initial={{ opacity: 0, y: 32, scale: 0.97 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{
+              duration: 1.2,
+              delay: 1,
+              ease: [0.22, 1, 0.36, 1],
+            }}
           />
-          <img
+          <motion.img
             src={Persona3}
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
-            className="absolute bottom-[5%] left-[50%] z-0 h-[95%] w-auto"
+            className="absolute bottom-[5%] left-[42%] z-0 h-[90%] w-auto sm:left-[50%] sm:h-[95%]"
             width={1080}
             height={2196}
             loading="lazy"
+            initial={{ opacity: 0, y: 32, scale: 0.97 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 1.2, delay: 1.8, ease: [0.22, 1, 0.36, 1] }}
           />
         </div>
       </div>

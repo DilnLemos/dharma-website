@@ -1,17 +1,11 @@
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
-
-import { WHATSAPP_URL } from "@/utils";
-
-const DAYS = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
-const MORNING_SCHEDULES = ["07:00 — 08:00", "08:00 — 09:00", "09:00 — 10:00"];
-const AFTERNOON_SCHEDULES = [
-  "03:00 — 04:00",
-  "04:00 — 05:00",
-  "05:00 — 06:00",
-  "06:00 — 07:00",
-  "07:00 — 08:00",
-];
+import {
+  AFTERNOON_SCHEDULES,
+  DAYS,
+  MORNING_SCHEDULES,
+  WHATSAPP_URL,
+} from "@/utils";
 
 export default function Schedule() {
   const [scheduleIndex, setScheduleIndex] = useState(0);
@@ -31,10 +25,7 @@ export default function Schedule() {
     AFTERNOON_SCHEDULES[scheduleIndex % AFTERNOON_SCHEDULES.length];
 
   return (
-    <section
-      id="horarios"
-      className="bg-bg border-border border-y py-20 sm:py-28"
-    >
+    <section id="horarios" className="bg-bg py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
           <div>
@@ -115,11 +106,11 @@ export default function Schedule() {
                   Disponible
                 </span>
               </div>
-              <div className="grid grid-cols-5 gap-x-4">
+              <div className="grid grid-cols-5 gap-x-1 sm:gap-x-4">
                 {DAYS.map((day) => (
                   <div
                     key={day}
-                    className="border-border text-lime border-t py-4 text-sm"
+                    className="border-border text-lime min-w-0 border-t py-4 text-center text-xs tracking-tight whitespace-nowrap sm:text-sm sm:tracking-normal"
                   >
                     {day}
                   </div>
