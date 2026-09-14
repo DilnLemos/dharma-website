@@ -1,6 +1,5 @@
 import DharmaHero from "@/assets/DharmaHero.webp";
-
-const WHATSAPP_URL = "https://wa.me/573148331777";
+import { WHATSAPP_URL } from "@/utils";
 
 export default function Hero() {
   return (
@@ -20,11 +19,11 @@ export default function Hero() {
 
       <div
         aria-hidden="true"
-        className="from-bg via-bg/70 to-bg/10 absolute inset-0 bg-gradient-to-r"
+        className="from-bg via-bg/70 to-bg/10 absolute inset-0 bg-linear-to-r"
       />
       <div
         aria-hidden="true"
-        className="from-bg via-bg/40 absolute inset-0 bg-gradient-to-t to-transparent"
+        className="from-bg via-bg/40 absolute inset-0 bg-linear-to-t to-transparent"
       />
 
       <div className="relative mx-auto w-full max-w-7xl px-5 pt-28 pb-12 sm:pb-16 lg:px-8 lg:pt-32 lg:pb-20">
@@ -32,7 +31,7 @@ export default function Hero() {
           <p className="font-display text-fg-muted flex items-center gap-3 text-sm font-medium tracking-[0.2em] uppercase">
             <span
               aria-hidden="true"
-              className="bg-lime h-[3px] w-10 [clip-path:polygon(5px_0,100%_0,100%_100%,0_100%,0_5px)]"
+              className="bg-lime h-0.75 w-10 [clip-path:polygon(5px_0,100%_0,100%_100%,0_100%,0_5px)]"
             />
             Roldanillo · Valle del Cauca
           </p>

@@ -1,7 +1,8 @@
+import { motion } from "motion/react";
+
 import Persona1 from "@/assets/Persona1.webp";
 import Persona2 from "@/assets/Persona2.webp";
 import Persona3 from "@/assets/Persona3.webp";
-
 
 const PILLARS = ["Comunidad", "Disciplina", "Entrenamiento"] as const;
 
@@ -41,7 +42,7 @@ export default function About() {
   return (
     <section
       id="nosotros"
-      className="pt-10 pb-20 sm:pt-14 sm:pb-28 lg:pt-20 lg:pb-32"
+      className="overflow-x-clip pt-10 pb-20 sm:pt-14 sm:pb-28 lg:pt-20 lg:pb-32"
     >
       <div className="mx-auto grid max-w-7xl gap-16 px-5 lg:grid-cols-2 lg:items-center lg:gap-20 lg:px-8">
         <div>
@@ -60,8 +61,8 @@ export default function About() {
           <div className="text-fg-muted mt-6 max-w-lg space-y-4 text-base leading-relaxed sm:text-lg">
             <p>
               Dharma no es un gimnasio más. Es el box donde el caucho huele a
-              esfuerzo, cada rep más cuenta y una comunidad entera se
-              exige ser mejor cada día.
+              esfuerzo, cada rep más cuenta y una comunidad entera se exige ser
+              mejor cada día.
             </p>
             <p>
               Aquí la disciplina se entrena, se comparte y se celebra. Cada
@@ -87,7 +88,7 @@ export default function About() {
           </div>
         </div>
 
-        <div className="relative mx-auto aspect-[4/5] w-full max-w-lg lg:max-w-none">
+        <div className="relative mx-auto aspect-4/5 w-full max-w-lg lg:max-w-none">
           <div
             aria-hidden="true"
             className="absolute -inset-6 rotate-[-4deg] sm:-inset-8 lg:-inset-10"
@@ -97,33 +98,48 @@ export default function About() {
 
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-x-[-20%] bottom-[-2%] z-20 h-40 bg-gradient-to-t from-[#080a0a]/100 via-[#080a0a]/85 to-transparent blur-[5px]"
+            className="from-bg via-bg/85 pointer-events-none absolute inset-x-[-20%] bottom-[-2%] z-20 h-40 bg-linear-to-t to-transparent blur-[5px]"
           />
 
-          <img
+          <motion.img
             src={Persona1}
             alt="Miembro de la comunidad Dharma CrossFit en una sesión de entrenamiento en el box"
-            className="absolute bottom-0 right-[60%] z-[1] h-[95%] w-auto rotate-2"
+            className="absolute bottom-0 left-[-8%] z-1 h-[90%] w-auto rotate-2 sm:right-[60%] sm:left-auto sm:h-[95%]"
             width={1080}
             height={1350}
             loading="lazy"
+            initial={{ opacity: 0, y: 32, scale: 0.97 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           />
-          <img
+          <motion.img
             src={Persona2}
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
-            className="absolute bottom-[-10%] left-[-10%] z-10 h-[100%] w-auto"
+            className="absolute bottom-[-5%] left-0 z-10 h-[90%] w-auto sm:bottom-[-10%] sm:left-[-10%] sm:h-full"
             width={1080}
             height={2196}
             loading="lazy"
-
+            initial={{ opacity: 0, y: 32, scale: 0.97 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{
+              duration: 1.2,
+              delay: 1,
+              ease: [0.22, 1, 0.36, 1],
+            }}
           />
-          <img
+          <motion.img
             src={Persona3}
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
-            className="absolute bottom-[5%] left-[50%] z-0 h-[95%] w-auto"
+            className="absolute bottom-[5%] left-[42%] z-0 h-[90%] w-auto sm:left-[50%] sm:h-[95%]"
             width={1080}
             height={2196}
             loading="lazy"
+            initial={{ opacity: 0, y: 32, scale: 0.97 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 1.2, delay: 1.8, ease: [0.22, 1, 0.36, 1] }}
           />
         </div>
       </div>

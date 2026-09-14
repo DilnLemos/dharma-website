@@ -10,21 +10,19 @@ import Training from "./components/Training";
 import Why from "./components/Why";
 
 function App() {
-
   return (
     <>
-    <Navbar/>
-    <Hero/>
-    <About/>
-    <Training/>
-    <Schedule/>
-    <Coach/>
-    <Why/>
-    <Gallery/>
-    <Location/>
-    <Contact/>
+      <Navbar />
+      <Hero />
+      <About />
+      <Training />
+      <Schedule />
+      <Coach />
+      <Why />
+      <Gallery />
+      <Location />
+      <Contact />
     </>
-
   );
 }
 

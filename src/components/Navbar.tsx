@@ -1,6 +1,7 @@
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-
 import DharmaLogo from "@/assets/DharmaLogo.jpg";
+import { WHATSAPP_URL } from "@/utils";
 
 const NAV_ITEMS = [
   { label: "Inicio", href: "#inicio" },
@@ -11,11 +12,37 @@ const NAV_ITEMS = [
   { label: "Contacto", href: "#contacto" },
 ] as const;
 
-const WHATSAPP_URL = "https://wa.me/573148331777";
+const menuVariants = {
+  open: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      when: "beforeChildren" as const,
+      duration: 0.3,
+      staggerChildren: 0.08,
+    },
+  },
+  closed: {
+    opacity: 0,
+    y: -12,
+    transition: {
+      when: "afterChildren" as const,
+      duration: 0.24,
+      staggerChildren: 0.04,
+      staggerDirection: -1,
+    },
+  },
+};
+
+const menuItemVariants = {
+  open: { opacity: 1, x: 0 },
+  closed: { opacity: 0, x: -18 },
+};
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
   const toggleRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -30,6 +57,19 @@ export default function Navbar() {
     if (menuOpen) {
       panelRef.current?.querySelector<HTMLElement>("a")?.focus();
     }
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const closeOnScroll = () => setMenuOpen(false);
+    window.addEventListener("scroll", closeOnScroll, { passive: true });
+    window.addEventListener("touchmove", closeOnScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", closeOnScroll);
+      window.removeEventListener("touchmove", closeOnScroll);
+    };
   }, [menuOpen]);
 
   useEffect(() => {
@@ -67,7 +107,7 @@ export default function Navbar() {
 
   return (
     <header className={headerClasses}>
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-5 lg:px-8">
+      <div className="relative z-20 mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-5 lg:px-8">
         <a
           href="#inicio"
           className="focus-visible:outline-lime flex shrink-0 items-center gap-3 focus-visible:outline-2 focus-visible:outline-offset-4"
@@ -148,29 +188,50 @@ export default function Navbar() {
         </div>
       </div>
 
-      <div
-        id="mobile-menu"
-        ref={panelRef}
-        tabIndex={-1}
-        hidden={!menuOpen}
-        className="border-border bg-bg border-t lg:hidden"
-      >
-        <nav
-          aria-label="Menú móvil"
-          className="mx-auto flex max-w-7xl flex-col px-5 py-4 lg:px-8"
-        >
-          {NAV_ITEMS.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
+      <AnimatePresence initial={false}>
+        {menuOpen && (
+          <>
+            <motion.button
+              type="button"
+              aria-label="Cerrar menú móvil"
               onClick={closeMenu}
-              className="border-border/60 font-display text-fg/85 hover:text-lime focus-visible:outline-lime border-b py-3 text-lg font-medium tracking-wide uppercase transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: shouldReduceMotion ? 0 : 0.3 }}
+              className="fixed inset-0 top-16 z-0 bg-black/35 backdrop-blur-[2px] lg:hidden"
+            />
+            <motion.div
+              id="mobile-menu"
+              ref={panelRef}
+              tabIndex={-1}
+              initial={shouldReduceMotion ? false : "closed"}
+              animate="open"
+              exit={shouldReduceMotion ? undefined : "closed"}
+              variants={menuVariants}
+              className="border-border bg-bg/95 relative z-10 border-t backdrop-blur-sm lg:hidden"
             >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-      </div>
+              <nav
+                aria-label="Menú móvil"
+                className="mx-auto flex max-w-7xl flex-col px-5 py-4 lg:px-8"
+              >
+                {NAV_ITEMS.map((item) => (
+                  <motion.a
+                    key={item.href}
+                    href={item.href}
+                    onClick={closeMenu}
+                    variants={menuItemVariants}
+                    transition={{ duration: shouldReduceMotion ? 0 : 0.35 }}
+                    className="border-border/60 font-display text-fg/85 hover:text-lime focus-visible:outline-lime border-b py-3 text-lg font-medium tracking-wide uppercase transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4"
+                  >
+                    {item.label}
+                  </motion.a>
+                ))}
+              </nav>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

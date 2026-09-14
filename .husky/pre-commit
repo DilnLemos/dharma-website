@@ -1,4 +1,12 @@
 pnpm run format
+pnpm run format:tailwind
+
+if ! git diff --quiet -- src; then
+	echo "Se han realizado cambios en los archivos en el formateo del código. Revisa los archivos, vuelve a hacer commit."
+	exit 1
+fi
+
+pnpm run lint:fix
 pnpm run test
 pnpm run lint
 pnpm run build

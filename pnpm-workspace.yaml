@@ -2,6 +2,6 @@ packages:
   - .
 
 allowBuilds:
-  '@swc/core': false
+  "@swc/core": false
 
 minimumReleaseAge: 1440
