@@ -60,6 +60,19 @@ export default function Navbar() {
   }, [menuOpen]);
 
   useEffect(() => {
+    if (!menuOpen) return;
+
+    const closeOnScroll = () => setMenuOpen(false);
+    window.addEventListener("scroll", closeOnScroll, { passive: true });
+    window.addEventListener("touchmove", closeOnScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", closeOnScroll);
+      window.removeEventListener("touchmove", closeOnScroll);
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setMenuOpen(false);
