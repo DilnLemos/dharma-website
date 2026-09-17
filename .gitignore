@@ -47,6 +47,19 @@ coverage
 agent/
 skills-lock.json
 
+# AI agent work directories
+.codex/
+.opencode/
+.impeccable/
+.github/agents/
+.github/hooks/
+.github/skills/
+
+# Working docs and scratch tasks (not part of the shipped site)
+PRODUCT.md
+DOC.md
+src/Tareas/
+
 # OS files
 .DS_Store
 Thumbs.db

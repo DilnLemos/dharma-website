@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
-
+import Diseño1 from "@/assets/Diseño_ind.svg";
+import Diseño2 from "@/assets/Diseño_ind2.svg";
 import Persona1 from "@/assets/Persona1.webp";
 import Persona2 from "@/assets/Persona2.webp";
 import Persona3 from "@/assets/Persona3.webp";
@@ -20,16 +21,7 @@ function PaintSplash() {
         fill="var(--color-petrol)"
         d="M30 480C10 400 70 330 150 300c50-20 90 0 130-10 60-18 130-40 190-22 50 15 75 62 40 112-32 45-90 68-140 90-50 22-60 65-115 90-75 35-200 5-225-80Z"
       />
-      {/* Acento lima: trazo corto y seco, arriba a la derecha, como marca de brocha */}
-      <path
-        fill="var(--color-lime)"
-        d="M350 150c60-20 120 10 150 50 10 15 5 30-10 40-20 12-50 0-70-20-30-30-70-50-70-70Z"
-      />
-      {/* Mano de brocha en lima oscuro cerca de la base */}
-      <path
-        fill="var(--color-lime-dark)"
-        d="M120 220c-15-10-25-25-15-40 10-15 30-15 40-2 10 12 3 27-10 32-5 4-10 16-15 10Z"
-      />
+
       {/* Salpicaduras puntuales */}
       <circle cx="78" cy="120" r="6" fill="var(--color-lime)" />
       <circle cx="512" cy="300" r="5" fill="var(--color-lime-dark)" />
@@ -104,7 +96,7 @@ export default function About() {
           <motion.img
             src={Persona1}
             alt="Miembro de la comunidad Dharma CrossFit en una sesión de entrenamiento en el box"
-            className="absolute bottom-0 left-[-8%] z-1 h-[90%] w-auto rotate-2 sm:right-[60%] sm:left-auto sm:h-[95%]"
+            className="absolute bottom-0 left-[-2%] z-1 h-[90%] w-auto rotate-2 sm:right-[60%] sm:left-auto sm:h-[95%]"
             width={1080}
             height={1350}
             loading="lazy"
@@ -116,7 +108,7 @@ export default function About() {
           <motion.img
             src={Persona2}
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
-            className="absolute bottom-[-5%] left-0 z-10 h-[90%] w-auto sm:bottom-[-10%] sm:left-[-10%] sm:h-full"
+            className="absolute bottom-[-9%] left-2 z-10 h-[90%] w-auto sm:bottom-[-10%] sm:left-[-10%] sm:h-full"
             width={1080}
             height={2196}
             loading="lazy"
@@ -132,7 +124,7 @@ export default function About() {
           <motion.img
             src={Persona3}
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
-            className="absolute bottom-[5%] left-[42%] z-0 h-[90%] w-auto sm:left-[50%] sm:h-[95%]"
+            className="absolute bottom-[5%] left-[48%] z-0 h-[90%] w-auto sm:left-[50%] sm:h-[95%]"
             width={1080}
             height={2196}
             loading="lazy"
@@ -140,6 +132,46 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 1.2, delay: 1.8, ease: [0.22, 1, 0.36, 1] }}
+          />
+
+          <img
+            src={Diseño1}
+            alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
+            className="absolute right-[54%] bottom-[70%] z-0 h-[6%] w-auto"
+            style={{ transform: "rotate(-35deg)" }}
+            width={1080}
+            height={2196}
+            loading="lazy"
+          />
+
+          <img
+            src={Diseño1}
+            alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
+            className="absolute right-[57%] bottom-[60%] z-0 h-[6%] w-auto"
+            style={{ transform: "rotate(-35deg)" }}
+            width={1080}
+            height={2196}
+            loading="lazy"
+          />
+
+          <img
+            src={Diseño2}
+            alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
+            className="absolute bottom-[77%] left-[63%] z-[-10] h-[4%] w-auto"
+            style={{ transform: "rotate(35deg)" }}
+            width={1080}
+            height={2196}
+            loading="lazy"
+          />
+
+          <img
+            src={Diseño2}
+            alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
+            className="absolute bottom-[80%] left-[48%] z-[-10] h-[4%] w-auto"
+            style={{ transform: "rotate(35deg)" }}
+            width={1080}
+            height={2196}
+            loading="lazy"
           />
         </div>
       </div>

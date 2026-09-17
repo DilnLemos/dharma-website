@@ -1,6 +1,6 @@
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import DharmaLogo from "@/assets/DharmaLogo.jpg";
+import DharmaLogo from "@/assets/DharmaLogo.webp";
 import { WHATSAPP_URL } from "@/utils";
 
 const NAV_ITEMS = [
@@ -8,7 +8,8 @@ const NAV_ITEMS = [
   { label: "Nosotros", href: "#nosotros" },
   { label: "Entrenamientos", href: "#entrenamientos" },
   { label: "Horarios", href: "#horarios" },
-  { label: "Galería", href: "#galeria" },
+  { label: "Coach", href: "#coach" },
+  { label: "Ubicación", href: "#ubicacion" },
   { label: "Contacto", href: "#contacto" },
 ] as const;
 

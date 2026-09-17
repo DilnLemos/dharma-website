@@ -12,8 +12,14 @@
 
   --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
+  --font-bangers: "Bangers", "Barlow Condensed", sans-serif;
+
+  /* Olive reference = #718700 (2.5:1 sobre lima, falla WCAG AA 3:1 texto
+     grande). #566800 conserva el matiz oliva y sube a 3.83:1 (AA). Ver DOC. */
+  --color-olive: #566800;
 
   --animate-rise: rise 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-window-in: window-in 500ms cubic-bezier(0.22, 1, 0.36, 1) both;
 
   @keyframes rise {
     from {
@@ -23,6 +29,17 @@
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @keyframes window-in {
+    from {
+      opacity: 0;
+      transform: translateX(-200px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
     }
   }
 }

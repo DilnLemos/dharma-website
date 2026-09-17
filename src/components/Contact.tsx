@@ -1,3 +1,90 @@
+import DharmaLogo from "@/assets/DharmaLogoHD.webp";
+import cardImg from "@/assets/fondo_card.webp";
+import instagramIcon from "@/assets/Instagram.svg";
+import whatsappIcon from "@/assets/Whatsapp.svg";
+import { INSTAGRAM_URL, WHATSAPP_CTA_URL } from "@/utils";
+
 export default function Contact() {
-  return <div>contact</div>;
+  return (
+    <section
+      id="contacto"
+      aria-labelledby="contacto-titulo"
+      className="bg-petrol relative overflow-hidden py-20 sm:py-24 lg:py-28"
+    >
+      <img
+        src={DharmaLogo}
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover blur-[15px]"
+      />
+
+      <div
+        aria-hidden="true"
+        className="from-bg pointer-events-none absolute inset-x-0 top-0 h-20 bg-linear-to-b to-transparent sm:h-28 lg:h-32"
+      />
+
+      <div className="relative mx-auto w-[92%] max-w-[615px]">
+        <div className="relative overflow-hidden rounded-[20px] shadow-[inset_4px_4px_20px_rgba(0,0,0,0.25)]">
+          <img
+            src={cardImg}
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none block h-auto w-full"
+            width={614}
+            height={328}
+          />
+
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-5 py-8 text-center sm:px-8 sm:py-10 lg:px-0 lg:py-0">
+            <h2
+              id="contacto-titulo"
+              className="font-bangers text-[clamp(1.5rem,5.5vw,2.5rem)] leading-[1.1] text-[#080a0a] uppercase lg:text-[48px] lg:leading-[1.1]"
+            >
+              <span className="block lg:whitespace-nowrap">
+                ¿Qué día es que vas
+              </span>
+              <span className="block lg:whitespace-nowrap">
+                a empezar a entrenar?
+              </span>
+            </h2>
+
+            <p className="font-bangers text-[clamp(1.25rem,4.5vw,1.75rem)] leading-tight text-[#718700] lg:text-[28px]">
+              Vamo&apos; a darle
+            </p>
+
+            <div className="mt-2 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:gap-4 lg:flex-row lg:items-center lg:gap-[14px]">
+              <a
+                href={WHATSAPP_CTA_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="font-bangers focus-visible:outline-fg inline-flex h-[46px] items-center justify-center gap-2 bg-[#080a0a] px-6 text-[22px] leading-none tracking-wide text-white uppercase transition-[background-color] duration-200 [clip-path:polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)] hover:bg-[#1a2121] focus-visible:outline-2 focus-visible:outline-offset-4 active:bg-[#0e1313]"
+              >
+                <img
+                  src={whatsappIcon}
+                  alt=""
+                  aria-hidden="true"
+                  className="h-[20px] w-[21px] shrink-0"
+                />
+                Escríbenos
+              </a>
+
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="font-bangers focus-visible:outline-fg inline-flex h-[46px] items-center justify-center gap-2 bg-[#080a0a] px-6 text-[22px] leading-none tracking-wide text-white uppercase transition-[background-color] duration-200 [clip-path:polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)] hover:bg-[#1a2121] focus-visible:outline-2 focus-visible:outline-offset-4 active:bg-[#0e1313]"
+              >
+                <img
+                  src={instagramIcon}
+                  alt=""
+                  aria-hidden="true"
+                  className="h-[20px] w-[20px] shrink-0"
+                />
+                Síguenos
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }

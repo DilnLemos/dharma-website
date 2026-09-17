@@ -17,6 +17,46 @@ function handleDirectionsClick(event: MouseEvent<HTMLAnchorElement>) {
   }
 }
 
+function MapCornerMarkUp() {
+  return (
+    <svg
+      viewBox="0 0 160 160"
+      aria-hidden="true"
+      className="text-lime/45 h-20 w-20 sm:h-28 sm:w-28"
+      fill="none"
+      strokeLinecap="square"
+    >
+      <g stroke="currentColor" strokeWidth="2">
+        <path d="M6 26V152" opacity="0.9" />
+        <path d="M16 6H150" opacity="0.9" />
+        <path d="M16 36h112" opacity="0.72" />
+        <path d="M16 66h82" opacity="0.55" />
+        <path d="M16 96h56" opacity="0.4" />
+      </g>
+    </svg>
+  );
+}
+
+function MapCornerMarkDown() {
+  return (
+    <svg
+      viewBox="0 0 160 160"
+      aria-hidden="true"
+      className="text-lime/45 h-20 w-20 -scale-x-100 -scale-y-100 sm:h-28 sm:w-28"
+      fill="none"
+      strokeLinecap="square"
+    >
+      <g stroke="currentColor" strokeWidth="2">
+        <path d="M6 26V152" opacity="0.9" />
+        <path d="M16 6H150" opacity="0.9" />
+        <path d="M16 36h112" opacity="0.72" />
+        <path d="M16 66h82" opacity="0.55" />
+        <path d="M16 96h56" opacity="0.4" />
+      </g>
+    </svg>
+  );
+}
+
 function PinIcon() {
   return (
     <svg
@@ -78,7 +118,19 @@ export default function Location() {
         </div>
 
         <div className="mt-12 grid gap-8 lg:grid-cols-[1.35fr_0.65fr] lg:items-stretch lg:gap-12">
-          <div className="border-border min-h-80 overflow-hidden border sm:min-h-96">
+          <div className="border-border relative min-h-80 overflow-hidden border sm:min-h-96">
+            <div
+              className="pointer-events-none absolute -top-3 -left-3"
+              aria-hidden="true"
+            >
+              <MapCornerMarkUp />
+            </div>
+            <div
+              className="pointer-events-none absolute -right-3 -bottom-3"
+              aria-hidden="true"
+            >
+              <MapCornerMarkDown />
+            </div>
             <iframe
               title="Mapa de Dharma CrossFit en Roldanillo"
               src={EMBED_MAP_URL}
@@ -88,7 +140,7 @@ export default function Location() {
             />
           </div>
 
-          <div className="border-border bg-bg flex flex-col justify-between border p-6 sm:p-8">
+          <div className="border-border bg-card-bg flex flex-col justify-between border p-6 sm:p-8">
             <div>
               <p className="font-display text-lime text-sm font-semibold tracking-[0.18em] uppercase">
                 Información
