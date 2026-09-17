@@ -23,7 +23,7 @@ export default function Contact() {
         className="from-bg pointer-events-none absolute inset-x-0 top-0 h-20 bg-linear-to-b to-transparent sm:h-28 lg:h-32"
       />
 
-      <div className="relative mx-auto w-[92%] max-w-[615px]">
+      <div className="relative mx-auto w-[92%] max-w-153.75">
         <div className="relative overflow-hidden rounded-[20px] shadow-[inset_4px_4px_20px_rgba(0,0,0,0.25)]">
           <img
             src={cardImg}
@@ -37,7 +37,7 @@ export default function Contact() {
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-5 py-8 text-center sm:px-8 sm:py-10 lg:px-0 lg:py-0">
             <h2
               id="contacto-titulo"
-              className="font-bangers text-[clamp(1.5rem,5.5vw,2.5rem)] leading-[1.1] text-[#080a0a] uppercase lg:text-[48px] lg:leading-[1.1]"
+              className="font-bangers text-bg text-[clamp(1.5rem,5.5vw,2.5rem)] leading-[1.1] uppercase lg:text-[48px] lg:leading-[1.1]"
             >
               <span className="block lg:whitespace-nowrap">
                 ¿Qué día es que vas
@@ -47,22 +47,22 @@ export default function Contact() {
               </span>
             </h2>
 
-            <p className="font-bangers text-[clamp(1.25rem,4.5vw,1.75rem)] leading-tight text-[#718700] lg:text-[28px]">
+            <p className="font-bangers text-lime-dark text-[clamp(1.25rem,4.5vw,1.75rem)] leading-tight lg:text-[28px]">
               Vamo&apos; a darle
             </p>
 
-            <div className="mt-2 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:gap-4 lg:flex-row lg:items-center lg:gap-[14px]">
+            <div className="mt-2 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:gap-4 lg:flex-row lg:items-center lg:gap-3.5">
               <a
                 href={WHATSAPP_CTA_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="font-bangers focus-visible:outline-fg inline-flex h-[46px] items-center justify-center gap-2 bg-[#080a0a] px-6 text-[22px] leading-none tracking-wide text-white uppercase transition-[background-color] duration-200 [clip-path:polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)] hover:bg-[#1a2121] focus-visible:outline-2 focus-visible:outline-offset-4 active:bg-[#0e1313]"
+                className="font-bangers focus-visible:outline-fg bg-bg inline-flex h-11.5 items-center justify-center gap-2 px-6 text-[22px] leading-none tracking-wide text-white uppercase transition-[background-color] duration-200 [clip-path:polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)] hover:bg-[#1a2121] focus-visible:outline-2 focus-visible:outline-offset-4 active:bg-[#0e1313]"
               >
                 <img
                   src={whatsappIcon}
                   alt=""
                   aria-hidden="true"
-                  className="h-[20px] w-[21px] shrink-0"
+                  className="h-5 w-5.25 shrink-0"
                 />
                 Escríbenos
               </a>
@@ -71,13 +71,13 @@ export default function Contact() {
                 href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="font-bangers focus-visible:outline-fg inline-flex h-[46px] items-center justify-center gap-2 bg-[#080a0a] px-6 text-[22px] leading-none tracking-wide text-white uppercase transition-[background-color] duration-200 [clip-path:polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)] hover:bg-[#1a2121] focus-visible:outline-2 focus-visible:outline-offset-4 active:bg-[#0e1313]"
+                className="font-bangers focus-visible:outline-fg bg-bg inline-flex h-11.5 items-center justify-center gap-2 px-6 text-[22px] leading-none tracking-wide text-white uppercase transition-[background-color] duration-200 [clip-path:polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)] hover:bg-[#1a2121] focus-visible:outline-2 focus-visible:outline-offset-4 active:bg-[#0e1313]"
               >
                 <img
                   src={instagramIcon}
                   alt=""
                   aria-hidden="true"
-                  className="h-[20px] w-[20px] shrink-0"
+                  className="h-5 w-5 shrink-0"
                 />
                 Síguenos
               </a>

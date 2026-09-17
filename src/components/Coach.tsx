@@ -52,7 +52,17 @@ export default function Coach() {
             />
           </motion.div>
 
-          <div className="text-center lg:text-left">
+          <motion.div
+            initial={{ opacity: 0, x: 32 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{
+              duration: 1.2,
+              delay: 0.35,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="text-center lg:text-left"
+          >
             <p className="font-display text-lime text-sm font-semibold tracking-[0.2em] uppercase">
               Coach
             </p>
@@ -63,10 +73,10 @@ export default function Coach() {
               La persona que acompaña cada sesión, guía tu entrenamiento y
               comparte el camino de evolución en Dharma CrossFit.
             </p>
-            <p className="text-fg-muted/70 mt-5 text-xs tracking-[0.16em] uppercase">
+            {/* <p className="text-fg-muted/70 mt-5 text-xs tracking-[0.16em] uppercase">
               Especialidad y certificaciones por confirmar
-            </p>
-          </div>
+            </p> */}
+          </motion.div>
         </div>
       </div>
     </section>
