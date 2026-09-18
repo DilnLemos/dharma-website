@@ -1,4 +1,4 @@
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, m, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import DharmaLogo from "@/assets/DharmaLogo.webp";
 import { WHATSAPP_URL } from "@/utils";
@@ -192,7 +192,7 @@ export default function Navbar() {
       <AnimatePresence initial={false}>
         {menuOpen && (
           <>
-            <motion.button
+            <m.button
               type="button"
               aria-label="Cerrar menú móvil"
               onClick={closeMenu}
@@ -202,7 +202,7 @@ export default function Navbar() {
               transition={{ duration: shouldReduceMotion ? 0 : 0.3 }}
               className="fixed inset-0 top-16 z-0 bg-black/35 backdrop-blur-[2px] lg:hidden"
             />
-            <motion.div
+            <m.div
               id="mobile-menu"
               ref={panelRef}
               tabIndex={-1}
@@ -217,7 +217,7 @@ export default function Navbar() {
                 className="mx-auto flex max-w-7xl flex-col px-5 py-4 lg:px-8"
               >
                 {NAV_ITEMS.map((item) => (
-                  <motion.a
+                  <m.a
                     key={item.href}
                     href={item.href}
                     onClick={closeMenu}
@@ -226,10 +226,10 @@ export default function Navbar() {
                     className="border-border/60 font-display text-fg/85 hover:text-lime focus-visible:outline-lime border-b py-3 text-lg font-medium tracking-wide uppercase transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4"
                   >
                     {item.label}
-                  </motion.a>
+                  </m.a>
                 ))}
               </nav>
-            </motion.div>
+            </m.div>
           </>
         )}
       </AnimatePresence>

@@ -16,6 +16,7 @@ export default function Contact() {
         alt=""
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 h-full w-full object-cover blur-[15px]"
+        loading="lazy"
       />
 
       <div
@@ -35,6 +36,7 @@ export default function Contact() {
             alt=""
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center"
+            loading="lazy"
           />
 
           <div className="relative flex h-auto flex-col items-center justify-center gap-3 px-5 py-10 text-center sm:px-8 sm:py-12 lg:h-full lg:px-0 lg:py-0">
