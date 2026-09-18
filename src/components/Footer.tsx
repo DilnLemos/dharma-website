@@ -1,4 +1,5 @@
 import DharmaLogo from "@/assets/DharmaLogo.webp";
+import GithubIcon from "@/assets/github.svg";
 import InstagramIcon from "@/assets/Instagram.svg";
 import WhatsappIcon from "@/assets/Whatsapp.svg";
 import { INSTAGRAM_URL, WHATSAPP_URL } from "@/utils";
@@ -23,6 +24,19 @@ const CHANNELS = [
     label: "WhatsApp",
     href: WHATSAPP_URL,
     icon: WhatsappIcon,
+  },
+] as const;
+
+const TEAM_MEMBERS = [
+  {
+    name: "Dilan Lemos",
+    instagram: "https://www.instagram.com/dilnlemos",
+    github: "https://github.com/DilnLemos",
+  },
+  {
+    name: "Álvaro José",
+    instagram: "https://www.instagram.com/alvarito_personal1357",
+    github: "https://github.com/AlvaroJose1357",
   },
 ] as const;
 
@@ -94,6 +108,7 @@ export default function Footer() {
                       href={channel.href}
                       target="_blank"
                       rel="noreferrer"
+                      aria-label={`Abrir ${channel.label} de Dharma CrossFit`}
                       className="font-display text-fg/80 hover:text-lime focus-visible:outline-lime flex items-center gap-3 text-sm font-medium tracking-wide uppercase transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4"
                     >
                       <img
@@ -112,13 +127,48 @@ export default function Footer() {
         </div>
 
         <div className="border-border mt-12 flex flex-col gap-3 border-t pt-6 sm:mt-14 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-fg-muted order-2 text-xs tracking-[0.18em] uppercase sm:order-1">
-            DilnLemos{" "}
-            <span aria-hidden="true" className="text-lime">
-              x
-            </span>{" "}
-            Álvaro José
-          </p>
+          <nav aria-label="Team members" className="order-2 sm:order-1">
+            <h2 className="sr-only">Team members</h2>
+            <ul className="text-fg-muted flex flex-col gap-3 text-xs tracking-[0.12em] uppercase">
+              {TEAM_MEMBERS.map((member) => (
+                <li key={member.name} className="flex items-center gap-4">
+                  <span className="min-w-28">{member.name}</span>
+                  <a
+                    href={member.instagram}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:text-lime focus-visible:outline-lime transition-colors focus-visible:outline-2 focus-visible:outline-offset-4"
+                  >
+                    <span className="sr-only">
+                      Instagram profile of {member.name}
+                    </span>
+                    <img
+                      src={InstagramIcon}
+                      alt=""
+                      aria-hidden="true"
+                      className="h-6 w-6"
+                    />
+                  </a>
+                  <a
+                    href={member.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="hover:text-lime focus-visible:outline-lime transition-colors focus-visible:outline-2 focus-visible:outline-offset-4"
+                  >
+                    <span className="sr-only">
+                      GitHub profile of {member.name}
+                    </span>
+                    <img
+                      src={GithubIcon}
+                      alt=""
+                      aria-hidden="true"
+                      className="h-8 w-8"
+                    />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
           <p className="text-fg-muted order-1 text-xs tracking-wider sm:order-2">
             © {new Date().getFullYear()} Dharma CrossFit - Todos los derechos
             reservados.

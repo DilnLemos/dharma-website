@@ -1,5 +1,17 @@
+import { motion } from "motion/react";
+
 import DharmaHero from "@/assets/DharmaHero.webp";
 import { WHATSAPP_URL } from "@/utils";
+
+const heroItemVariants = {
+  hidden: { opacity: 0, x: -32 },
+  visible: { opacity: 1, x: 0 },
+};
+
+const heroButtonVariants = {
+  hidden: { opacity: 0, y: 32 },
+  visible: { opacity: 1, y: 0 },
+};
 
 export default function Hero() {
   return (
@@ -27,41 +39,66 @@ export default function Hero() {
       />
 
       <div className="relative mx-auto w-full max-w-7xl px-5 pt-28 pb-12 sm:pb-16 lg:px-8 lg:pt-32 lg:pb-20">
-        <div className="motion-safe:animate-rise max-w-2xl">
-          <p className="font-display text-fg-muted flex items-center gap-3 text-sm font-medium tracking-[0.2em] uppercase">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: {},
+            visible: {
+              transition: { staggerChildren: 0.16, delayChildren: 0.15 },
+            },
+          }}
+          className="max-w-2xl"
+        >
+          <motion.p
+            variants={heroItemVariants}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="font-display text-fg-muted flex items-center gap-3 text-sm font-medium tracking-[0.2em] uppercase"
+          >
             <span
               aria-hidden="true"
               className="bg-lime h-0.75 w-10 [clip-path:polygon(5px_0,100%_0,100%_100%,0_100%,0_5px)]"
             />
             Roldanillo · Valle del Cauca
-          </p>
+          </motion.p>
 
-          <p className="font-display text-fg/90 mt-7 text-xl font-semibold tracking-[0.28em] uppercase sm:text-2xl">
+          <motion.p
+            variants={heroItemVariants}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="font-display text-fg/90 mt-7 text-xl font-semibold tracking-[0.28em] uppercase sm:text-2xl"
+          >
             Dharma CrsFit
-          </p>
+          </motion.p>
 
-          <h1 className="font-display text-fg mt-2 text-5xl leading-[0.9] font-bold tracking-tight uppercase sm:text-7xl lg:text-8xl">
+          <motion.h1
+            variants={heroItemVariants}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="font-display text-fg mt-2 text-5xl leading-[0.9] font-bold tracking-tight uppercase sm:text-7xl lg:text-8xl"
+          >
             Eres tú <br></br>contra ti.
-          </h1>
+          </motion.h1>
 
-          <p className="text-fg-muted mt-5 max-w-xl text-base sm:text-lg">
+          <motion.p
+            variants={heroItemVariants}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="text-fg-muted mt-5 max-w-xl text-base sm:text-lg"
+          >
             Tiempo para todo, menos para rendirte.
-          </p>
+          </motion.p>
 
-          <p className="text-fg mt-6 flex items-center gap-2 text-sm sm:text-base">
-            <svg
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              fill="currentColor"
-              className="text-lime h-4 w-4"
-            >
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z" />
-            </svg>
-            <span>5.0/5.0</span>
-            <span className="text-fg-muted">· Roldanillo</span>
-          </p>
+          <motion.p
+            variants={heroItemVariants}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="text-fg mt-6 flex items-center gap-2 text-sm sm:text-base"
+          >
+            <span className="text-fg-muted">Roldanillo</span>
+          </motion.p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <motion.div
+            variants={heroButtonVariants}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
+          >
             <a
               href={WHATSAPP_URL}
               target="_blank"
@@ -76,8 +113,8 @@ export default function Hero() {
             >
               Conoce el box
             </a>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

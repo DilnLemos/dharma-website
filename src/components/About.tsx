@@ -157,7 +157,7 @@ export default function About() {
           <img
             src={Diseño2}
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
-            className="absolute bottom-[77%] left-[63%] z-[-10] h-[4%] w-auto"
+            className="absolute bottom-[77%] left-[63%] -z-10 h-[4%] w-auto"
             style={{ transform: "rotate(35deg)" }}
             width={1080}
             height={2196}
@@ -167,7 +167,7 @@ export default function About() {
           <img
             src={Diseño2}
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
-            className="absolute bottom-[80%] left-[48%] z-[-10] h-[4%] w-auto"
+            className="absolute bottom-[80%] left-[48%] -z-10 h-[4%] w-auto"
             style={{ transform: "rotate(35deg)" }}
             width={1080}
             height={2196}
