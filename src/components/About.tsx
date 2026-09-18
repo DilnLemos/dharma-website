@@ -4,6 +4,7 @@ import Diseño2 from "@/assets/Diseño_ind2.svg";
 import Persona1 from "@/assets/Persona1.webp";
 import Persona2 from "@/assets/Persona2.webp";
 import Persona3 from "@/assets/Persona3.webp";
+import Persona4 from "@/assets/Persona4.webp";
 
 const PILLARS = ["Comunidad", "Disciplina", "Entrenamiento"] as const;
 
@@ -96,7 +97,7 @@ export default function About() {
           <m.img
             src={Persona1}
             alt="Miembro de la comunidad Dharma CrossFit en una sesión de entrenamiento en el box"
-            className="absolute bottom-0 left-[-2%] z-1 h-[90%] w-auto rotate-2 sm:right-[60%] sm:left-auto sm:h-[95%]"
+            className="absolute bottom-0 left-[-2%] z-20 h-[90%] w-auto rotate-2 sm:right-[60%] sm:left-auto sm:h-[95%]"
             width={1080}
             height={1350}
             loading="lazy"
@@ -108,7 +109,7 @@ export default function About() {
           <m.img
             src={Persona2}
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
-            className="absolute bottom-[-9%] left-2 z-10 h-[90%] w-auto sm:bottom-[-10%] sm:left-[-10%] sm:h-full"
+            className="absolute bottom-[-9%] left-2 z-30 h-[90%] w-auto sm:bottom-[-10%] sm:left-[-10%] sm:h-full"
             width={1080}
             height={2196}
             loading="lazy"
@@ -124,7 +125,19 @@ export default function About() {
           <m.img
             src={Persona3}
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
-            className="absolute bottom-[5%] left-[48%] z-0 h-[90%] w-auto sm:left-[50%] sm:h-[95%]"
+            className="absolute bottom-[5%] left-[48%] z-20 h-[90%] w-auto sm:left-[50%] sm:h-[95%]"
+            width={1080}
+            height={2196}
+            loading="lazy"
+            initial={{ opacity: 0, y: 32, scale: 0.97 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 1.2, delay: 1.8, ease: [0.22, 1, 0.36, 1] }}
+          />
+          <motion.img
+            src={Persona4}
+            alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
+            className="absolute bottom-[39%] left-[15%] z-10 h-[90%] w-auto sm:left-[22%] sm:h-[47%]"
             width={1080}
             height={2196}
             loading="lazy"
@@ -157,7 +170,7 @@ export default function About() {
           <img
             src={Diseño2}
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
-            className="absolute bottom-[77%] left-[63%] -z-10 h-[4%] w-auto"
+            className="absolute bottom-[77%] left-[63%] z-0 h-[4%] w-auto"
             style={{ transform: "rotate(35deg)" }}
             width={1080}
             height={2196}
@@ -167,7 +180,7 @@ export default function About() {
           <img
             src={Diseño2}
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
-            className="absolute bottom-[80%] left-[48%] -z-10 h-[4%] w-auto"
+            className="absolute bottom-[80%] left-[48%] z-0 h-[4%] w-auto"
             style={{ transform: "rotate(35deg)" }}
             width={1080}
             height={2196}
