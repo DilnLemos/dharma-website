@@ -86,14 +86,6 @@ export default function Hero() {
             Tiempo para todo, menos para rendirte.
           </m.p>
 
-          <m.p
-            variants={heroItemVariants}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="text-fg mt-6 flex items-center gap-2 text-sm sm:text-base"
-          >
-            <span className="text-fg-muted">Roldanillo</span>
-          </m.p>
-
           <m.div
             variants={heroButtonVariants}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
