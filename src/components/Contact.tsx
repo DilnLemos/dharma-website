@@ -23,18 +23,21 @@ export default function Contact() {
         className="from-bg pointer-events-none absolute inset-x-0 top-0 h-20 bg-linear-to-b to-transparent sm:h-28 lg:h-32"
       />
 
+      <div
+        aria-hidden="true"
+        className="to-bg pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-linear-to-b from-transparent sm:h-28 lg:h-32"
+      />
+
       <div className="relative mx-auto w-[92%] max-w-153.75">
-        <div className="relative overflow-hidden rounded-[20px] shadow-[inset_4px_4px_20px_rgba(0,0,0,0.25)]">
+        <div className="relative overflow-hidden lg:aspect-[1226/652]">
           <img
             src={cardImg}
             alt=""
             aria-hidden="true"
-            className="pointer-events-none block h-auto w-full"
-            width={614}
-            height={328}
+            className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center"
           />
 
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-5 py-8 text-center sm:px-8 sm:py-10 lg:px-0 lg:py-0">
+          <div className="relative flex h-auto flex-col items-center justify-center gap-3 px-5 py-10 text-center sm:px-8 sm:py-12 lg:h-full lg:px-0 lg:py-0">
             <h2
               id="contacto-titulo"
               className="font-bangers text-bg text-[clamp(1.5rem,5.5vw,2.5rem)] leading-[1.1] uppercase lg:text-[48px] lg:leading-[1.1]"
@@ -47,7 +50,7 @@ export default function Contact() {
               </span>
             </h2>
 
-            <p className="font-bangers text-lime-dark text-[clamp(1.25rem,4.5vw,1.75rem)] leading-tight lg:text-[28px]">
+            <p className="font-bangers text-olive text-[clamp(1.25rem,4.5vw,1.75rem)] leading-tight lg:text-[28px]">
               Vamo&apos; a darle
             </p>
 

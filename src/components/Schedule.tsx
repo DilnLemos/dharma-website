@@ -17,7 +17,7 @@ export default function Schedule() {
 
     const intervalId = window.setInterval(() => {
       setScheduleIndex((currentIndex) => currentIndex + 1);
-    }, 3500);
+    }, 2500);
 
     return () => window.clearInterval(intervalId);
   }, [scheduleStarted]);
@@ -98,7 +98,7 @@ export default function Schedule() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
-            onAnimationComplete={() => setScheduleStarted(true)}
+            onViewportEnter={() => setScheduleStarted(true)}
             className="border-border bg-card-bg mt-12 border"
           >
             <div className="border-border grid border-b sm:grid-cols-2">

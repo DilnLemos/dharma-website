@@ -295,3 +295,61 @@ Actualización de la sección Sobre Dharma. Fuentes: `AGENTS.md` (§2, §3, §5,
 ## Recomendación de tests
 
 Sección 100% presentacional. **No recomiendo Vitest/TLR ahora**; el checklist manual cubre el riesgo real (render de las 3 imágenes WebP con alpha, solape y alts).
+
+---
+
+# DOC — Contacto / CTA final (Dharma CrossFit)
+
+Última sección construida (tras Navbar, Hero, About). Fuentes: `AGENTS.md` (§2, §3, §4, §6, §7, §8, §9, §19, §25) y `Dharma_CrossFit_Documento_Identidad_y_Landing.md` (§1, §3, §11, §19, §20, §22, §25). Tarea 1: `src/Tareas/Tarea_1.md` — "corregir comportamiento responsivo de la card y eliminar todo contorno/sombra para que la Card quede angular e integrada".
+
+## Decisiones de diseño
+
+### La card y su geometría
+
+- Fondo real `fondo_card.webp` (1226×652, esquinas achaflanadas, margen transparente) como `<img>` con `object-cover object-center` → las esquinas angulares vienen del propio arte, **no** de `border-radius` (§2 "sin redondeos"). El envase usa `lg:aspect-[1226/652]` + `object-cover` para que el arte llene el contenedor 1:1.
+- **Zero contorno/sombra:** sin `shadow`, sin borde, sin `rounded`, sin desenfoque del logo ni video/glow de fondo detrás — la Card es un panel lima de bordes rectos sobre el petróleo (§22). El `overflow-hidden` existe solo para el solape del arte, no para un contorno redondeado. La imagen decorativa lleva `aria-hidden` + `alt=""` con `pointer-events-none`.
+- Barra de transición superior `bg-linear-to-b from-bg→transparent` (mimética del Hero/About) para fundir la sección con la anterior sin marco.
+
+### Móvil (<lg): el fix del colapso
+
+- Bug: el contenido era `absolute inset-0`, de modo que el alto del envase dependía únicamente de `aspect-*` de desktop → **en móvil el envase colapsaba a altura 0** y la card aparecía "cortada/entrecortada" (ver `src/assets/ErrorCard.jpeg`).
+- Fix: en móvil el contenido fluye (`relative flex h-auto flex-col … px-5 py-10 sm:px-8 sm:py-12`), definiendo el alto del envase; solo en `lg` el contenido pasa a `lg:h-full` y el envase a `lg:aspect-[1226/652]`. La imagen `absolute inset-0 object-cover` rellena ese alto en ambos casos.
+
+### Tipografía / color
+
+- h2 (único title de la sección, `id="contacto-titulo"` + `aria-labelledby`) en Barlow Condensed uppercase, `text-bg` sobre lima → contraste ≈12:1 (AA/AAA). Titular-partido en dos líneas `lg:whitespace-nowrap`.
+- Subtitle "Vamo' a darle": `text-olive` (`--color-olive` #566800) sobre lima ≈3.83:1 → **AA para texto grande** (≥3:1). Descarte de `text-lime-dark` (#718700 ≈2.5:1) por fallar AA incluso en grande — se usa el token olive existente (motor de mismo valor pero más oscuro), no un color nuevo.
+- Botones con esquina biselada vía `clip-path` (mismo lenguaje angular del navbar/hero §7). Primario `bg-bg` (texto blanco, hover slate → adrenalina limpia); secundario `bg-bg` outline con `SÍGUENOS` + icono IG.
+
+### CTA y jerarquía
+
+- Primario: WhatsApp (`WHATSAPP_CTA_URL`) "ESCRÍBENOS" — negro sobre lima directo a §CTA. Secundario: Instagram (`INSTAGRAM_URL`) "SÍGUENOS". En móvil se apilan (columna, full-width al ancho del tótem) para thumb-reach; en `lg` fila (`lg:gap-3.5 lg:items-center`).
+- Corrección de una sola etiqueta por intento: "EMPEZAR/EMPIEZA" (hero/nav) no se replica aquí; la card cierra la conversion con "escríbenos / síguenos" — un solo objetivo final, no dos CTAs de la misma intención compitiendo (§"one label per intent").
+
+## Alternativas consideradas y descartadas
+
+- **Mantener el subtítulo en `text-lime-dark`** → descartado: 2.5:1 falla AA (texto grande ≥3:1). `--color-olive` ya existía en `@theme`; zero new tokens.
+- **Restaurar `rounded-[20px]` + sombra interior + logo desenfocado atrás** (estado inicial) → descartado: contradice "angular corners / sin shadow blur" de AGENTS §7 y el hallazgo del cliente.
+- **Convertir el contenido en tarjeta independiente (panel con border) sobre la card** → descartado: duplicaría contorno; el brief quiere "solo la card visible".
+
+## Validación responsive (geometría por código, sin navegador headless)
+
+- **375px:** contenido en flujo define el alto; CTA apilados full-width; la imagen lima rellena con `object-cover`. Sin overflow horizontal (padding `px-5` + `w-[92%]`).
+- **768px:** CTA en fila (`sm:flex-row`); título a `clamp` 5.5vw; card ancha relativa al viewport.
+- **1280px:** envase `lg:aspect-[1226/652]` ≈1226×652; contenido centrado dentro (`lg:h-full` + `justify-center`); título 48px, subtitle 28px.
+
+## Accesibilidad (hallazgos)
+
+- **Contraste corregido:** subtitle pasó a `text-olive` para satisfacer AA texto grande; h2/título `text-bg` y botones `bg-bg`+blanco ya cumplen AA/AAA.
+- **Jerarquía:** h2 único por sección; no hay h3-falso; la sección queda etiquetada por `aria-labelledby`.
+- **Teclado/foco:** ambos CTAs son enlaces reales `href` con `/rel="noreferrer"` + `target`, foco visible; tocaya con `focus-visible:outline-2` heredada del sistema. La imagen decorativa no recibe foco.
+- **Alt:** la card es decorativa (`alt="" aria-hidden`), no informativa; posibles pill de texto dentro de la imagen no se describen (verificar con visión humana).
+- **Reduced motion:** sin animaciones; solo transiciones de color en hover (no se gated, son cambios de tinte no de movimiento).
+
+## QA checklist manual (sin test runner)
+
+- [ ] `pnpm build` pasa sin errores de tipo.
+- [ ] Sin sombra/contorno/redondeo en la card, en móvil y desktop; esquina angular intacta en 1280px.
+- [ ] En móvil la card ya no se corta: alto definido por contenido, imagen cubre todo.
+- [ ] Subtitle legible (AA) sobre lima en móvil y desktop.
+- [ ] Botones CTA apilados en móvil / fila en desktop, sin overflow.
