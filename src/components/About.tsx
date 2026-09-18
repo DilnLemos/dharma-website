@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import Diseño1 from "@/assets/Diseño_ind.svg";
 import Diseño2 from "@/assets/Diseño_ind2.svg";
 import Persona1 from "@/assets/Persona1.webp";
@@ -93,7 +93,7 @@ export default function About() {
             className="from-bg via-bg/85 pointer-events-none absolute inset-x-[-20%] bottom-[-2%] z-20 h-40 bg-linear-to-t to-transparent blur-[5px]"
           />
 
-          <motion.img
+          <m.img
             src={Persona1}
             alt="Miembro de la comunidad Dharma CrossFit en una sesión de entrenamiento en el box"
             className="absolute bottom-0 left-[-2%] z-1 h-[90%] w-auto rotate-2 sm:right-[60%] sm:left-auto sm:h-[95%]"
@@ -105,7 +105,7 @@ export default function About() {
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           />
-          <motion.img
+          <m.img
             src={Persona2}
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
             className="absolute bottom-[-9%] left-2 z-10 h-[90%] w-auto sm:bottom-[-10%] sm:left-[-10%] sm:h-full"
@@ -121,7 +121,7 @@ export default function About() {
               ease: [0.22, 1, 0.36, 1],
             }}
           />
-          <motion.img
+          <m.img
             src={Persona3}
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
             className="absolute bottom-[5%] left-[48%] z-0 h-[90%] w-auto sm:left-[50%] sm:h-[95%]"

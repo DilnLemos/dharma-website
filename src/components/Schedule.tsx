@@ -1,4 +1,4 @@
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, m, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
 import {
   AFTERNOON_SCHEDULES,
@@ -31,7 +31,7 @@ export default function Schedule() {
     <section id="horarios" className="bg-bg py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-          <motion.div
+          <m.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
@@ -42,7 +42,7 @@ export default function Schedule() {
               },
             }}
           >
-            <motion.p
+            <m.p
               variants={{
                 hidden: { opacity: 0, x: -32 },
                 visible: { opacity: 1, x: 0 },
@@ -55,8 +55,8 @@ export default function Schedule() {
                 className="bg-lime h-0.75 w-10 [clip-path:polygon(5px_0,100%_0,100%_100%,0_100%,0_5px)]"
               />
               Horarios
-            </motion.p>
-            <motion.h2
+            </m.p>
+            <m.h2
               variants={{
                 hidden: { opacity: 0, x: -32 },
                 visible: { opacity: 1, x: 0 },
@@ -65,8 +65,8 @@ export default function Schedule() {
               className="font-display text-fg mt-5 max-w-lg text-5xl leading-[0.9] font-bold tracking-tight uppercase sm:text-7xl"
             >
               Encuentra tu horario.
-            </motion.h2>
-            <motion.p
+            </m.h2>
+            <m.p
               variants={{
                 hidden: { opacity: 0, x: -32 },
                 visible: { opacity: 1, x: 0 },
@@ -76,9 +76,9 @@ export default function Schedule() {
             >
               Las clases tienen una duración de 1 hora. Elige el horario que
               mejor se adapte a tu ritmo.
-            </motion.p>
+            </m.p>
 
-            <motion.a
+            <m.a
               variants={{
                 hidden: { opacity: 0, x: -32 },
                 visible: { opacity: 1, x: 0 },
@@ -90,10 +90,10 @@ export default function Schedule() {
               className="bg-lime font-display text-bg focus-visible:outline-fg mt-8 inline-flex items-center justify-center px-7 py-4 text-sm font-bold tracking-wider uppercase transition-[filter] duration-200 [clip-path:polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)] hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-4 active:brightness-95"
             >
               Preguntar por horarios
-            </motion.a>
-          </motion.div>
+            </m.a>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={shouldReduceMotion ? false : { opacity: 0, y: -40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -108,7 +108,7 @@ export default function Schedule() {
                 </p>
                 <div className="mt-3 min-h-12 sm:min-h-15">
                   <AnimatePresence mode="wait" initial={false}>
-                    <motion.p
+                    <m.p
                       key={morningSchedule}
                       initial={shouldReduceMotion ? false : { opacity: 0 }}
                       animate={{ opacity: 1 }}
@@ -117,7 +117,7 @@ export default function Schedule() {
                       className="font-display text-lime text-4xl font-bold tracking-tight sm:text-5xl"
                     >
                       {morningSchedule}
-                    </motion.p>
+                    </m.p>
                   </AnimatePresence>
                 </div>
               </div>
@@ -127,7 +127,7 @@ export default function Schedule() {
                 </p>
                 <div className="mt-3 min-h-12 sm:min-h-15">
                   <AnimatePresence mode="wait" initial={false}>
-                    <motion.p
+                    <m.p
                       key={afternoonSchedule}
                       initial={shouldReduceMotion ? false : { opacity: 0 }}
                       animate={{ opacity: 1 }}
@@ -136,7 +136,7 @@ export default function Schedule() {
                       className="font-display text-lime text-4xl font-bold tracking-tight sm:text-5xl"
                     >
                       {afternoonSchedule}
-                    </motion.p>
+                    </m.p>
                   </AnimatePresence>
                 </div>
               </div>
@@ -163,7 +163,7 @@ export default function Schedule() {
                 ))}
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

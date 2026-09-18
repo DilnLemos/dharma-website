@@ -59,6 +59,7 @@ export default function Footer() {
                 className="h-12 w-12 object-contain"
                 width={48}
                 height={48}
+                loading="lazy"
               />
               <span className="font-display text-fg text-2xl leading-none font-bold tracking-wider uppercase">
                 Dharma

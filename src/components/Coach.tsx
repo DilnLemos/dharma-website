@@ -1,4 +1,4 @@
-import { motion } from "motion/react";
+import { m } from "motion/react";
 
 import CoachImage from "@/assets/Coach.webp";
 
@@ -23,7 +23,7 @@ export default function Coach() {
         </h2>
 
         <div className="mx-auto mt-12 grid max-w-5xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
@@ -34,7 +34,7 @@ export default function Coach() {
               aria-hidden="true"
               className="border-lime pointer-events-none absolute inset-3 border sm:inset-4"
             />
-            <motion.img
+            <m.img
               initial={{ opacity: 0, y: 48, scale: 0.94 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.25 }}
@@ -50,9 +50,9 @@ export default function Coach() {
               height={960}
               loading="lazy"
             />
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: 32 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.25 }}
@@ -76,7 +76,7 @@ export default function Coach() {
             {/* <p className="text-fg-muted/70 mt-5 text-xs tracking-[0.16em] uppercase">
               Especialidad y certificaciones por confirmar
             </p> */}
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>
