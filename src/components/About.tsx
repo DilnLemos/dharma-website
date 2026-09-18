@@ -120,7 +120,7 @@ export default function About() {
           <m.img
             src={Persona3}
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
-            className="z-21h-[90%] absolute bottom-[5%] left-[48%] w-auto mask-[linear-gradient(to_top,transparent_0%,black_24%,black_100%)] sm:left-[50%] sm:h-[95%]"
+            className="absolute bottom-0 left-[48%] z-19 h-[90%] w-auto rotate-2 mask-[linear-gradient(to_top,transparent_0%,black_24%,black_100%)] sm:left-[50%] sm:h-[95%]"
             width={1080}
             height={2196}
             loading="lazy"
@@ -136,7 +136,7 @@ export default function About() {
           <m.img
             src={Persona4}
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
-            className="absolute bottom-[39%] left-[15%] z-10 h-[90%] w-auto mask-[linear-gradient(to_top,transparent_0%,black_24%,black_100%)] sm:left-[22%] sm:h-[47%]"
+            className="absolute bottom-[34%] left-[32%] z-10 h-[50%] w-auto mask-[linear-gradient(to_top,transparent_0%,black_24%,black_100%)] sm:bottom-[39%] sm:left-[22%] sm:h-[47%]"
             width={1080}
             height={2196}
             loading="lazy"
