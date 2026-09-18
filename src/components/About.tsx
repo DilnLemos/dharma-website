@@ -89,31 +89,22 @@ export default function About() {
             <PaintSplash />
           </div>
 
-          <div
-            aria-hidden="true"
-            className="from-bg via-bg/85 pointer-events-none absolute inset-x-[-20%] bottom-[-2%] z-20 h-40 bg-linear-to-t to-transparent blur-[5px]"
-          />
-
           <m.img
             src={Persona1}
             alt="Miembro de la comunidad Dharma CrossFit en una sesión de entrenamiento en el box"
-            className="absolute bottom-0 left-[-2%] z-20 h-[90%] w-auto rotate-2 sm:right-[60%] sm:left-auto sm:h-[95%]"
             width={1080}
             height={1350}
             loading="lazy"
+            className="absolute bottom-0 left-[-2%] z-20 h-[90%] w-auto rotate-2 mask-[linear-gradient(to_top,transparent_0%,black_24%,black_100%)] sm:right-[60%] sm:left-auto sm:h-[95%]"
             initial={{ opacity: 0, y: 32, scale: 0.97 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           />
-          <div
-            aria-hidden="true"
-            className="via-bg/10 to-bg/45 pointer-events-none absolute bottom-0 left-[-2%] z-25 h-[24%] w-[48%] bg-linear-to-t from-transparent sm:right-[80%] sm:left-auto sm:w-[32%]"
-          />
           <m.img
             src={Persona2}
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
-            className="absolute bottom-[-9%] left-2 z-30 h-[90%] w-auto sm:bottom-[-10%] sm:left-[-10%] sm:h-full"
+            className="absolute bottom-[-9%] left-2 z-20 h-[90%] w-auto mask-[linear-gradient(to_top,transparent_0%,black_24%,black_100%)] sm:bottom-[-10%] sm:left-[-10%] sm:h-full"
             width={1080}
             height={2196}
             loading="lazy"
@@ -126,14 +117,10 @@ export default function About() {
               ease: [0.22, 1, 0.36, 1],
             }}
           />
-          <div
-            aria-hidden="true"
-            className="via-bg/8 to-bg/55 pointer-events-none absolute bottom-[-9%] left-2 z-35 h-[28%] w-[52%] bg-linear-to-t from-transparent sm:bottom-[-10%] sm:left-[-10%] sm:w-[58%]"
-          />
           <m.img
             src={Persona3}
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
-            className="absolute bottom-[5%] left-[48%] z-20 h-[90%] w-auto sm:left-[50%] sm:h-[95%]"
+            className="z-21h-[90%] absolute bottom-[5%] left-[48%] w-auto mask-[linear-gradient(to_top,transparent_0%,black_24%,black_100%)] sm:left-[50%] sm:h-[95%]"
             width={1080}
             height={2196}
             loading="lazy"
@@ -144,12 +131,12 @@ export default function About() {
           />
           <div
             aria-hidden="true"
-            className="via-bg/10 to-bg/45 pointer-events-none absolute bottom-[5%] left-[48%] z-25 h-[22%] w-[42%] bg-linear-to-t from-transparent sm:left-[50%] sm:w-[38%]"
+            className="from-bg via-bg/85 pointer-events-none absolute inset-x-[-20%] bottom-[-2%] z-20 h-40 bg-linear-to-t to-transparent blur-[5px]"
           />
           <m.img
             src={Persona4}
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
-            className="absolute bottom-[39%] left-[15%] z-10 h-[90%] w-auto sm:left-[22%] sm:h-[47%]"
+            className="absolute bottom-[39%] left-[15%] z-10 h-[90%] w-auto mask-[linear-gradient(to_top,transparent_0%,black_24%,black_100%)] sm:left-[22%] sm:h-[47%]"
             width={1080}
             height={2196}
             loading="lazy"
@@ -182,7 +169,7 @@ export default function About() {
           <img
             src={Diseño2}
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
-            className="absolute bottom-[77%] left-[63%] z-0 h-[4%] w-auto"
+            className="absolute bottom-[77%] left-[63%] -z-1 h-[4%] w-auto"
             style={{ transform: "rotate(35deg)" }}
             width={1080}
             height={2196}
@@ -192,7 +179,7 @@ export default function About() {
           <img
             src={Diseño2}
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
-            className="absolute bottom-[80%] left-[48%] z-0 h-[4%] w-auto"
+            className="absolute bottom-[80%] left-[48%] -z-1 h-[4%] w-auto"
             style={{ transform: "rotate(35deg)" }}
             width={1080}
             height={2196}
