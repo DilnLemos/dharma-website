@@ -101,6 +101,10 @@ export default function About() {
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           />
+          <div
+            aria-hidden="true"
+            className="via-bg/10 to-bg/45 pointer-events-none absolute bottom-0 left-[-2%] z-25 h-[24%] w-[48%] bg-linear-to-t from-transparent sm:right-[80%] sm:left-auto sm:w-[32%]"
+          />
           <motion.img
             src={Persona2}
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
@@ -117,6 +121,10 @@ export default function About() {
               ease: [0.22, 1, 0.36, 1],
             }}
           />
+          <div
+            aria-hidden="true"
+            className="via-bg/8 to-bg/55 pointer-events-none absolute bottom-[-9%] left-2 z-35 h-[28%] w-[52%] bg-linear-to-t from-transparent sm:bottom-[-10%] sm:left-[-10%] sm:w-[58%]"
+          />
           <motion.img
             src={Persona3}
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
@@ -128,6 +136,10 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 1.2, delay: 1.8, ease: [0.22, 1, 0.36, 1] }}
+          />
+          <div
+            aria-hidden="true"
+            className="via-bg/10 to-bg/45 pointer-events-none absolute bottom-[5%] left-[48%] z-25 h-[22%] w-[42%] bg-linear-to-t from-transparent sm:left-[50%] sm:w-[38%]"
           />
           <motion.img
             src={Persona4}

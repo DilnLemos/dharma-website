@@ -1,4 +1,4 @@
-import { m } from "motion/react";
+import { motion } from "motion/react";
 
 import DharmaHero from "@/assets/DharmaHero.webp";
 import { WHATSAPP_URL } from "@/utils";
@@ -39,7 +39,7 @@ export default function Hero() {
       />
 
       <div className="relative mx-auto w-full max-w-7xl px-5 pt-28 pb-12 sm:pb-16 lg:px-8 lg:pt-32 lg:pb-20">
-        <m.div
+        <motion.div
           initial="hidden"
           animate="visible"
           variants={{
@@ -50,7 +50,7 @@ export default function Hero() {
           }}
           className="max-w-2xl"
         >
-          <m.p
+          <motion.p
             variants={heroItemVariants}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="font-display text-fg-muted flex items-center gap-3 text-sm font-medium tracking-[0.2em] uppercase"
@@ -60,33 +60,39 @@ export default function Hero() {
               className="bg-lime h-0.75 w-10 [clip-path:polygon(5px_0,100%_0,100%_100%,0_100%,0_5px)]"
             />
             Roldanillo · Valle del Cauca
-          </m.p>
+          </motion.p>
 
-          <m.p
+          <motion.p
             variants={heroItemVariants}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="font-display text-fg/90 mt-7 text-xl font-semibold tracking-[0.28em] uppercase sm:text-2xl"
           >
             Dharma CrsFit
-          </m.p>
+          </motion.p>
 
-          <m.h1
+          <motion.h1
             variants={heroItemVariants}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="font-display text-fg mt-2 text-5xl leading-[0.9] font-bold tracking-tight uppercase sm:text-7xl lg:text-8xl"
           >
             Eres tú <br></br>contra ti.
-          </m.h1>
+          </motion.h1>
 
-          <m.p
+          <motion.p
             variants={heroItemVariants}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="text-fg-muted mt-5 max-w-xl text-base sm:text-lg"
           >
             Tiempo para todo, menos para rendirte.
-          </m.p>
+          </motion.p>
 
-          <m.div
+          <motion.p
+            variants={heroItemVariants}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="text-fg mt-6 flex items-center gap-2 text-sm sm:text-base"
+          ></motion.p>
+
+          <motion.div
             variants={heroButtonVariants}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
@@ -105,8 +111,8 @@ export default function Hero() {
             >
               Conoce el box
             </a>
-          </m.div>
-        </m.div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
