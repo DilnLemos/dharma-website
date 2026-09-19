@@ -1,6 +1,6 @@
 import { m } from "motion/react";
 
-import CoachImage from "@/assets/Coach.webp";
+import CoachImage from "@/assets/imgs/Coach.webp";
 
 export default function Coach() {
   return (
