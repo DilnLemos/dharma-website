@@ -1,10 +1,10 @@
 import { m } from "motion/react";
-import Diseño1 from "@/assets/svg/Diseño_ind.svg";
-import Diseño2 from "@/assets/svg/Diseño_ind2.svg";
 import Persona1 from "@/assets/imgs/Persona1.webp";
 import Persona2 from "@/assets/imgs/Persona2.webp";
 import Persona3 from "@/assets/imgs/Persona3.webp";
 import Persona4 from "@/assets/imgs/Persona4.webp";
+import Diseño1 from "@/assets/svg/Diseño_ind.svg";
+import Diseño2 from "@/assets/svg/Diseño_ind2.svg";
 
 const PILLARS = ["Comunidad", "Disciplina", "Entrenamiento"] as const;
 
