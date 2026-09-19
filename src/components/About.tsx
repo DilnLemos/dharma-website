@@ -1,8 +1,22 @@
 import { m } from "motion/react";
-import Persona1 from "@/assets/imgs/Persona1.webp";
-import Persona2 from "@/assets/imgs/Persona2.webp";
-import Persona3 from "@/assets/imgs/Persona3.webp";
-import Persona4 from "@/assets/imgs/Persona4.webp";
+import Persona1_480 from "@/assets/imgs/Persona1-480.webp";
+import Persona1_640 from "@/assets/imgs/Persona1-640.webp";
+import Persona1_800 from "@/assets/imgs/Persona1-800.webp";
+import Persona1_1080 from "@/assets/imgs/Persona1-1080.webp";
+
+import Persona2_480 from "@/assets/imgs/Persona2-480.webp";
+import Persona2_640 from "@/assets/imgs/Persona2-640.webp";
+import Persona2_800 from "@/assets/imgs/Persona2-800.webp";
+
+import Persona3_480 from "@/assets/imgs/Persona3-480.webp";
+import Persona3_640 from "@/assets/imgs/Persona3-640.webp";
+import Persona3_800 from "@/assets/imgs/Persona3-800.webp";
+import Persona3_1080 from "@/assets/imgs/Persona3-1080.webp";
+
+import Persona4_480 from "@/assets/imgs/Persona4-480.webp";
+import Persona4_640 from "@/assets/imgs/Persona4-640.webp";
+import Persona4_800 from "@/assets/imgs/Persona4-800.webp";
+
 import Diseño1 from "@/assets/svg/Diseño_ind.svg";
 import Diseño2 from "@/assets/svg/Diseño_ind2.svg";
 
@@ -90,10 +104,16 @@ export default function About() {
           </div>
 
           <m.img
-            src={Persona1}
+            src={Persona1_800}
+            srcSet={`
+            ${Persona1_480} 480w, 
+            ${Persona1_640} 640w, 
+            ${Persona1_800} 800w, 
+            ${Persona1_1080} 1080w`}
+            sizes="(min-width: 1024px) 26vw, (min-width: 640px) 37vw, 40vw"
             alt="Miembro de la comunidad Dharma CrossFit en una sesión de entrenamiento en el box"
-            width={1080}
-            height={1350}
+            width={480}
+            height={975}
             loading="lazy"
             className="absolute bottom-0 left-[-2%] z-20 h-[90%] w-auto rotate-2 mask-[linear-gradient(to_top,transparent_0%,black_24%,black_100%)] sm:right-[60%] sm:left-auto sm:h-[95%]"
             initial={{ opacity: 0, y: 32, scale: 0.97 }}
@@ -101,28 +121,38 @@ export default function About() {
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           />
+
           <m.img
-            src={Persona2}
+            src={Persona2_800}
+            srcSet={`
+            ${Persona2_480} 480w,
+            ${Persona2_640} 640w,
+            ${Persona2_800} 800w
+          `}
+            sizes="(min-width: 1024px) 35vw, (min-width: 640px) 40vw, 40vw"
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
             className="absolute bottom-[-9%] left-2 z-20 h-[90%] w-auto mask-[linear-gradient(to_top,transparent_0%,black_24%,black_100%)] sm:bottom-[-10%] sm:left-[-10%] sm:h-full"
-            width={1080}
-            height={2196}
+            width={480}
+            height={600}
             loading="lazy"
             initial={{ opacity: 0, y: 32, scale: 0.97 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.25 }}
-            transition={{
-              duration: 1.2,
-              delay: 1,
-              ease: [0.22, 1, 0.36, 1],
-            }}
+            transition={{ duration: 1.2, delay: 1, ease: [0.22, 1, 0.36, 1] }}
           />
+
           <m.img
-            src={Persona3}
+            src={Persona3_800}
+            srcSet={`
+            ${Persona3_480} 480w, 
+            ${Persona3_640} 640w, 
+            ${Persona3_800} 800w, 
+            ${Persona3_1080} 1080w`}
+            sizes="(min-width: 1024px) 29vw, (min-width: 640px) 41vw, 40vw"
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
             className="absolute bottom-0 left-[48%] z-19 h-[90%] w-auto rotate-2 mask-[linear-gradient(to_top,transparent_0%,black_24%,black_100%)] sm:left-[50%] sm:h-[95%]"
-            width={1080}
-            height={2196}
+            width={480}
+            height={868}
             loading="lazy"
             initial={{ opacity: 0, y: 32, scale: 0.97 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -133,17 +163,28 @@ export default function About() {
             aria-hidden="true"
             className="from-bg via-bg/85 pointer-events-none absolute inset-x-[-20%] bottom-[-2%] z-20 h-40 bg-linear-to-t to-transparent blur-[5px]"
           />
+
           <m.img
-            src={Persona4}
+            src={Persona4_640}
+            srcSet={`
+            ${Persona4_480} 480w,
+            ${Persona4_640} 640w,
+            ${Persona4_800} 800w
+            `}
+            sizes="(min-width: 1024px) 20vw, (min-width: 640px) 25vw, 30vw"
             alt="Deportista de Dharma CrossFit entrenando en el box de Roldanillo"
             className="absolute bottom-[34%] left-[32%] z-10 h-[50%] w-auto mask-[linear-gradient(to_top,transparent_0%,black_24%,black_100%)] sm:bottom-[39%] sm:left-[22%] sm:h-[47%]"
-            width={1080}
-            height={2196}
+            width={480}
+            height={502}
             loading="lazy"
             initial={{ opacity: 0, y: 32, scale: 0.97 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 1.2, delay: 2.2, ease: [0.22, 1, 0.36, 1] }}
+            transition={{
+              duration: 1.2,
+              delay: 2.2,
+              ease: [0.22, 1, 0.36, 1],
+            }}
           />
 
           <img

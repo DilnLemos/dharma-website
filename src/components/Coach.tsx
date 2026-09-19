@@ -1,6 +1,8 @@
 import { m } from "motion/react";
 
-import CoachImage from "@/assets/imgs/Coach.webp";
+import Coach_480 from "@/assets/imgs/Coach-480.webp";
+import Coach_640 from "@/assets/imgs/Coach-640.webp";
+import Coach_800 from "@/assets/imgs/Coach-800.webp";
 
 export default function Coach() {
   return (
@@ -43,11 +45,17 @@ export default function Coach() {
                 delay: 0.35,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              src={CoachImage}
+              src={Coach_640}
+              srcSet={`
+              ${Coach_480} 480w, 
+              ${Coach_640} 640w, 
+              ${Coach_800} 800w
+            `}
+              sizes="(min-width: 1024px) 40vw, (min-width: 640px) 50vw, 80vw"
               alt="Coach de Dharma CrossFit"
               className="mx-auto block aspect-4/5 w-full mask-[linear-gradient(to_bottom,black_78%,transparent_100%)] object-contain object-bottom [-webkit-mask-image:linear-gradient(to_bottom,black_78%,transparent_100%)]"
-              width={768}
-              height={960}
+              width={640}
+              height={800}
               loading="lazy"
             />
           </m.div>
