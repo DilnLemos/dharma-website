@@ -1,6 +1,10 @@
 import { motion } from "motion/react";
 
-import DharmaHero from "@/assets/imgs/DharmaHero.webp";
+import DharmaHero_640 from "@/assets/imgs/DharmaHero-640.webp";
+import DharmaHero_960 from "@/assets/imgs/DharmaHero-960.webp";
+import DharmaHero_1280 from "@/assets/imgs/DharmaHero-1280.webp";
+import DharmaHero_1600 from "@/assets/imgs/DharmaHero-1600.webp";
+import DharmaHero_1920 from "@/assets/imgs/DharmaHero-1920.webp";
 import { WHATSAPP_URL } from "@/utils";
 
 const heroItemVariants = {
@@ -20,7 +24,15 @@ export default function Hero() {
       className="relative flex min-h-svh items-end overflow-hidden lg:items-center"
     >
       <img
-        src={DharmaHero}
+        src={DharmaHero_1600}
+        srcSet={`
+          ${DharmaHero_640} 640w, 
+          ${DharmaHero_960} 960w, 
+          ${DharmaHero_1280} 1280w, 
+          ${DharmaHero_1600} 1600w, 
+          ${DharmaHero_1920} 1920w
+        `}
+        sizes="100vw"
         alt="Entrenamiento de CrossFit en el box de Dharma CrossFit, Roldanillo"
         className="absolute inset-0 h-full w-full object-cover"
         width={1920}

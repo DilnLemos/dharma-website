@@ -1,4 +1,6 @@
-import DharmaLogo from "@/assets/imgs/DharmaLogoHD.webp";
+import DharmaLogo_640 from "@/assets/imgs/DharmaLogoHD-640.webp";
+import DharmaLogo_960 from "@/assets/imgs/DharmaLogoHD-960.webp";
+import DharmaLogo_1280 from "@/assets/imgs/DharmaLogoHD-1280.webp";
 import cardImg from "@/assets/imgs/fondo_card.webp";
 import instagramIcon from "@/assets/svg/Instagram.svg";
 import whatsappIcon from "@/assets/svg/Whatsapp.svg";
@@ -12,8 +14,14 @@ export default function Contact() {
       className="bg-petrol relative overflow-hidden py-20 sm:py-24 lg:py-28"
     >
       <img
-        src={DharmaLogo}
-        alt=""
+        src={DharmaLogo_960}
+        srcSet={`
+          ${DharmaLogo_640} 640w, 
+          ${DharmaLogo_960} 960w, 
+          ${DharmaLogo_1280} 1280w
+        `}
+        sizes="100vw"
+        alt="Fondo desenfocado con el logo de Dharma CrossFit"
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 h-full w-full object-cover blur-[15px]"
         loading="lazy"
@@ -33,7 +41,7 @@ export default function Contact() {
         <div className="relative overflow-hidden lg:aspect-[1226/652]">
           <img
             src={cardImg}
-            alt=""
+            alt="Fondo con textura de papel arrugado"
             aria-hidden="true"
             className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center"
             loading="lazy"
