@@ -1,7 +1,7 @@
-import DharmaLogo from "@/assets/DharmaLogoHD.webp";
-import cardImg from "@/assets/fondo_card.webp";
-import instagramIcon from "@/assets/Instagram.svg";
-import whatsappIcon from "@/assets/Whatsapp.svg";
+import DharmaLogo from "@/assets/imgs/DharmaLogoHD.webp";
+import cardImg from "@/assets/imgs/fondo_card.webp";
+import instagramIcon from "@/assets/svg/Instagram.svg";
+import whatsappIcon from "@/assets/svg/Whatsapp.svg";
 import { INSTAGRAM_URL, WHATSAPP_CTA_URL } from "@/utils";
 
 export default function Contact() {

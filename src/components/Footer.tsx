@@ -1,7 +1,7 @@
-import DharmaLogo from "@/assets/DharmaLogo.webp";
-import GithubIcon from "@/assets/github.svg";
-import InstagramIcon from "@/assets/Instagram.svg";
-import WhatsappIcon from "@/assets/Whatsapp.svg";
+import DharmaLogo from "@/assets/imgs/DharmaLogo.webp";
+import GithubIcon from "@/assets/svg/github.svg";
+import InstagramIcon from "@/assets/svg/Instagram.svg";
+import WhatsappIcon from "@/assets/svg/Whatsapp.svg";
 import { INSTAGRAM_URL, WHATSAPP_URL } from "@/utils";
 
 const FOOTER_LINKS = [

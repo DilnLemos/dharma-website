@@ -8,7 +8,7 @@ Fuentes: `AGENTS.md` (§1–9) y `Dharma_CrossFit_Documento_Identidad_y_Landing.
 ### Tipografía
 
 - **Display / navegación:** Barlow Condensed (500/600/700), mayúsculas, `tracking-wide`, `text-sm` en desktop y `text-lg` en el menú móvil. Es una de las opciones de la identidad (§5) y refuerza el carácter editorial/atleético del logo.
-- **Body global:** Inter, definido en `@theme` como `--font-sans`. Se cargan ambas vía Google Fonts en `index.html`.
+- **Body global:** Inter, definido en `@theme` como `--font-sans`. La tipografía se sirve ahora desde WOFF2 locales y se registra en `src/index.css` con `@font-face`.
 
 ### Color
 

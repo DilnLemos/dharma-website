@@ -1,6 +1,6 @@
 import { AnimatePresence, m, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import DharmaLogo from "@/assets/DharmaLogo.webp";
+import DharmaLogo from "@/assets/imgs/DharmaLogo.webp";
 import { WHATSAPP_URL } from "@/utils";
 
 const NAV_ITEMS = [

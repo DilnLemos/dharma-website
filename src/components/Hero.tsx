@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 
-import DharmaHero from "@/assets/DharmaHero.webp";
+import DharmaHero from "@/assets/imgs/DharmaHero.webp";
 import { WHATSAPP_URL } from "@/utils";
 
 const heroItemVariants = {
