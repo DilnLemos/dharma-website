@@ -82,13 +82,9 @@ export default function Hero() {
             Dharma CrsFit
           </motion.p>
 
-          <motion.h1
-            variants={heroItemVariants}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display text-fg mt-2 text-5xl leading-[0.9] font-bold tracking-tight uppercase sm:text-7xl lg:text-8xl"
-          >
+          <h1 className="font-display text-fg mt-2 text-5xl leading-[0.9] font-bold tracking-tight uppercase sm:text-7xl lg:text-8xl">
             Eres tú <br></br>contra ti.
-          </motion.h1>
+          </h1>
 
           <motion.p
             variants={heroItemVariants}
