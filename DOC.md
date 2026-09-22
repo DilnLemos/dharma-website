@@ -353,3 +353,61 @@ Sección 100% presentacional. **No recomiendo Vitest/TLR ahora**; el checklist m
 - [ ] En móvil la card ya no se corta: alto definido por contenido, imagen cubre todo.
 - [ ] Subtitle legible (AA) sobre lima en móvil y desktop.
 - [ ] Botones CTA apilados en móvil / fila en desktop, sin overflow.
+
+---
+
+# DOC — Rendimiento · CSS render-blocking (Dharma CrossFit)
+
+Tarea: `src/Tareas/Tarea_1.md` — "Solicitudes que bloquean el renderizado — Ahorro estimado: 1950 ms".
+
+## Causa raíz confirmada (medida, no supuesta)
+
+- **Única solicitud render-blocking:** el `<link rel="stylesheet" href="/assets/index-BwsLVUgV.css">` que Vite inyecta en el `<head>`. No hay otra: sin Google Fonts ni CSS externo (5 `@font-face` locales woff2 con `font-display: swap`; audit `font-display` score 1), sin scripts síncronos (entry `type="module"` = deferred), sin `preload`/`modulepreload`, sin `vercel.json`.
+- **CSS ya purgado:** 35.636 B raw / 7.077 B gzip (Lighthouse: 7,6 KiB transfer). El header del bundle es `tailwindcss v4.3.3`; audit `unused-css-rules` score 1. Sólo trae 2 queries responsive (`width>=40rem`, `width>=64rem`) + `hover` + `prefers-reduced-motion`, y los 5 `@font-face` locales. Tailwind v4 vía `@tailwindcss/vite` con auto-detection (no hay `tailwind.config.*`).
+- **La brecha 150 ms → 1.950 ms es simulación de Lighthouse:** suma el retraso de primer pintado por la cadena HTML→CSS en red simulada (slow-4G), no el tiempo de descarga del archivo. Confirmado localmente: `render-blocking-insight` score **0** con savings **1.500 ms** (variante local del 1.950 ms reportado en Vercel; la diferencia es la emulación de red/dominio) para **un solo ítem** (el CSS, 154 ms).
+
+## Solución aplicada y por qué
+
+Plugin propio `inline-css` en `vite.config.ts` (**sin dependencias nuevas**): en `generateBundle` (`enforce: "post"`) reemplaza el/los `<link rel="stylesheet">` del HTML compilado por un `<style>` con el CSS embebido, y elimina el `.css` del bundle si ninguna chunk JS lo referencia. El LCP no depende de la ruta crítica CSS; los estilos viajan dentro del HTML → primer paint ya estilado.
+
+- **Por qué inlinear todo y no critical-CSS:** el bundle completo es 7,1 KiB gzip. Dividir crítico/diferido añadiría complejidad (`media`/`onload`) y riesgo de FOUC para una ganancia marginal.
+- **Por qué no `rel="preload"` con fallback:** la precarga no aplica estilos, no saca el bloqueo del primer pintado, y mantiene el riesgo de FOUC; la tarea exige evaluar primero la vía nativa Vite (que no tiene extracción de critical CSS con este stack). 
+
+### Cambio documentado línea por línea (`vite.config.ts`)
+
+- Se añade `type Plugin` al import de `vite` para el plugin tipado.
+- `inlineCss()` devuelve un plugin Rollup/Vite:
+  - `name: "inline-css"`, `enforce: "post"` → corre después de la inyección de tags de Vite en el build.
+  - `generateBundle`: lee `bundle["index.html"]`, y por cada asset `.css` reemplaza el `<link rel="stylesheet" href="…">` que apunte a esa URL por `<style>{css}</style>`.
+  - Si ninguna chunk JS referencia el `.css`, se borra del bundle (no queda archivo huérfano en `dist`).
+- `plugins: [react(), tailwindcss(), inlineCss()]` — se agrega el plugin propio a la lista existente. Nuiltd: no cambia dev (solo afecta `generateBundle` del build).
+
+## Validación
+
+- `pnpm build` OK (typecheck `tsc -b` + vite). `pnpm lint` (`biome lint src`) sin issues.
+- Medición local (Lighthouse CLI 13.5, mobile throttled, `chrome-headless-shell` 153.0.8010.52, sobre `vite preview`):
+
+| Audit / métrica | antes | después |
+|---|---|---|
+| `render-blocking-insight` | score 0 · 1 item (CSS) · savings 1.500 ms | **score 1 · 0 items** |
+| Performance | 77 | 78 |
+| FCP | 2,9 s | 2,8 s |
+| LCP | 4,7 s | 4,7 s (sin regresión) |
+| TBT | 100 ms | 70 ms |
+| Speed Index | 2,9 s | 2,8 s |
+
+- `.css` requests durante la carga después del cambio: **0**. HTML transfer: 1,2 → 8,2 KiB gzip (CSS embebido; bytes netos similares, un request menos en ruta crítica).
+- FOUC: imposible por construcción (estilos inline en el HTML). Verificado por `--dump-dom`: `<style>` con los 35,6 KiB de Tailwind en head, render de React OK (navbar, h1, imágenes). Screenshots 375/768/1280 capturados con el headless shell.
+
+## Alternativas descartadas
+
+- **Critical-CSS splitting** (inline above-the-fold + diferir el resto) → a 7,1 KiB gzip el ahorro es marginal; introduce `media`/`onload` y riesgo de FOUC.
+- **`media="print" onload="this.media='all'"`** → parche; la tarea lo prohíbe si hay vía nativa; aquí la vía nativa es inlinear el bundle completo.
+- **Solo `rel="preload"` del CSS** (sin reemplazar el `<link>`) → no elimina el bloqueo de primer pintado.
+- **Plugin de terceros (p. ej. `vite-plugin-*` de critical css)** → no se instalaron dependencias nuevas; el plugin propio resuelve el caso sin agregar carga de proyecto.
+
+## Pendiente de confirmar (no inventado)
+
+- **Métrica en producción:** el 1.950 ms reportado es de `dharmacrsfit.vercel.app`. Hace falta **redeploy en Vercel y volver a correr PageSpeed Insights** para confirmar en el dominio real — no se asume que el número bajó sin medirlo (los savings de Lighthouse son simulados y dependen de red/dominio). Sin `vercel.json`, se asume auto-detección del preset Vite.
+- **`vite.config.ts` usa `__dirname`** (aviso de Vite 8: `configLoader: 'native'` planeado como default) → migrar a `import.meta.dirname` sería lo siguiente limpio; fuera de alcance de esta tarea.
+- **Nota visual:** el H1 real renderizado es "Eres tú contra ti." (el DOC del Hero documenta "SUPERA TUS LÍMITES."); el copy evolucionó fuera de este ciclo y las imágenes/screenshots no son revisables por este modelo (sin soporte de imagen).
