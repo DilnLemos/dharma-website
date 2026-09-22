@@ -1,7 +1,8 @@
-import { AnimatePresence, m, useReducedMotion } from "motion/react";
+// Animations are lazy-loaded; use non-animated fallbacks here.
 import { useEffect, useRef, useState } from "react";
 import DharmaLogo from "@/assets/imgs/DharmaLogo.webp";
 import { WHATSAPP_URL } from "@/utils";
+import { Anim, Presence, useMotionReduced } from "./MotionProvider";
 
 const NAV_ITEMS = [
   { label: "Inicio", href: "#inicio" },
@@ -13,37 +14,12 @@ const NAV_ITEMS = [
   { label: "Contacto", href: "#contacto" },
 ] as const;
 
-const menuVariants = {
-  open: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      when: "beforeChildren" as const,
-      duration: 0.3,
-      staggerChildren: 0.08,
-    },
-  },
-  closed: {
-    opacity: 0,
-    y: -12,
-    transition: {
-      when: "afterChildren" as const,
-      duration: 0.24,
-      staggerChildren: 0.04,
-      staggerDirection: -1,
-    },
-  },
-};
-
-const menuItemVariants = {
-  open: { opacity: 1, x: 0 },
-  closed: { opacity: 0, x: -18 },
-};
+// Motion variants removed; Navbar uses static fallback UI for now.
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const shouldReduceMotion = useReducedMotion();
+  // Motion is lazy-loaded elsewhere; no runtime motion flag needed in fallback.
   const toggleRef = useRef<HTMLButtonElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -91,6 +67,8 @@ export default function Navbar() {
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
+
+  const reduceMotion = useMotionReduced();
 
   const closeMenu = () => {
     setMenuOpen(false);
@@ -189,27 +167,34 @@ export default function Navbar() {
         </div>
       </div>
 
-      <AnimatePresence initial={false}>
+      <Presence>
         {menuOpen && (
           <>
-            <m.button
+            <Anim
+              tag="button"
+              motionProps={{
+                initial: { opacity: 0 },
+                animate: { opacity: 1 },
+                exit: { opacity: 0 },
+                transition: { duration: reduceMotion ? 0 : 0.25 },
+              }}
               type="button"
               aria-label="Cerrar menú móvil"
               onClick={closeMenu}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: shouldReduceMotion ? 0 : 0.3 }}
               className="fixed inset-0 top-16 z-0 bg-black/35 backdrop-blur-[2px] lg:hidden"
             />
-            <m.div
+
+            <Anim
+              tag="div"
+              motionProps={{
+                initial: { opacity: 0, y: -8 },
+                animate: { opacity: 1, y: 0 },
+                exit: { opacity: 0, y: -6 },
+                transition: { duration: reduceMotion ? 0 : 0.28 },
+              }}
               id="mobile-menu"
               ref={panelRef}
               tabIndex={-1}
-              initial={shouldReduceMotion ? false : "closed"}
-              animate="open"
-              exit={shouldReduceMotion ? undefined : "closed"}
-              variants={menuVariants}
               className="border-border bg-bg/95 relative z-10 border-t backdrop-blur-sm lg:hidden"
             >
               <nav
@@ -217,22 +202,26 @@ export default function Navbar() {
                 className="mx-auto flex max-w-7xl flex-col px-5 py-4 lg:px-8"
               >
                 {NAV_ITEMS.map((item) => (
-                  <m.a
+                  <Anim
                     key={item.href}
+                    tag="a"
+                    motionProps={{
+                      initial: { opacity: 0, x: -8 },
+                      animate: { opacity: 1, x: 0 },
+                      transition: { duration: reduceMotion ? 0 : 0.28 },
+                    }}
                     href={item.href}
                     onClick={closeMenu}
-                    variants={menuItemVariants}
-                    transition={{ duration: shouldReduceMotion ? 0 : 0.35 }}
                     className="border-border/60 font-display text-fg/85 hover:text-lime focus-visible:outline-lime border-b py-3 text-lg font-medium tracking-wide uppercase transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4"
                   >
                     {item.label}
-                  </m.a>
+                  </Anim>
                 ))}
               </nav>
-            </m.div>
+            </Anim>
           </>
         )}
-      </AnimatePresence>
+      </Presence>
     </header>
   );
 }

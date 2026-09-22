@@ -1,4 +1,3 @@
-import { AnimatePresence, m, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
 import {
   AFTERNOON_SCHEDULES,
@@ -6,11 +5,13 @@ import {
   MORNING_SCHEDULES,
   WHATSAPP_URL,
 } from "@/utils";
+import { Anim, Presence, useMotionReduced } from "./MotionProvider";
 
 export default function Schedule() {
   const [scheduleIndex, setScheduleIndex] = useState(0);
   const [scheduleStarted, setScheduleStarted] = useState(false);
-  const shouldReduceMotion = useReducedMotion();
+  const reduceMotion = useMotionReduced();
+  // Animations are lazy-loaded; keep static fallbacks here.
 
   useEffect(() => {
     if (!scheduleStarted) return;
@@ -31,73 +32,40 @@ export default function Schedule() {
     <section id="horarios" className="bg-bg py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-          <m.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={{
-              hidden: {},
-              visible: {
-                transition: { staggerChildren: 0.16, delayChildren: 0.1 },
-              },
-            }}
-          >
-            <m.p
-              variants={{
-                hidden: { opacity: 0, x: -32 },
-                visible: { opacity: 1, x: 0 },
-              }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display text-lime flex items-center gap-3 text-sm font-semibold tracking-[0.2em] uppercase"
-            >
+          <div>
+            <p className="font-display text-lime flex items-center gap-3 text-sm font-semibold tracking-[0.2em] uppercase">
               <span
                 aria-hidden="true"
                 className="bg-lime h-0.75 w-10 [clip-path:polygon(5px_0,100%_0,100%_100%,0_100%,0_5px)]"
               />
               Horarios
-            </m.p>
-            <m.h2
-              variants={{
-                hidden: { opacity: 0, x: -32 },
-                visible: { opacity: 1, x: 0 },
-              }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display text-fg mt-5 max-w-lg text-5xl leading-[0.9] font-bold tracking-tight uppercase sm:text-7xl"
-            >
+            </p>
+            <h2 className="font-display text-fg mt-5 max-w-lg text-5xl leading-[0.9] font-bold tracking-tight uppercase sm:text-7xl">
               Encuentra tu horario.
-            </m.h2>
-            <m.p
-              variants={{
-                hidden: { opacity: 0, x: -32 },
-                visible: { opacity: 1, x: 0 },
-              }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="text-fg-muted mt-6 max-w-md text-base leading-7 sm:text-lg"
-            >
+            </h2>
+            <p className="text-fg-muted mt-6 max-w-md text-base leading-7 sm:text-lg">
               Las clases tienen una duración de 1 hora. Elige el horario que
               mejor se adapte a tu ritmo.
-            </m.p>
+            </p>
 
-            <m.a
-              variants={{
-                hidden: { opacity: 0, x: -32 },
-                visible: { opacity: 1, x: 0 },
-              }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noreferrer"
               className="bg-lime font-display text-bg focus-visible:outline-fg mt-8 inline-flex items-center justify-center px-7 py-4 text-sm font-bold tracking-wider uppercase transition-[filter] duration-200 [clip-path:polygon(10px_0,100%_0,100%_calc(100%-10px),calc(100%-10px)_100%,0_100%,0_10px)] hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-4 active:brightness-95"
             >
               Preguntar por horarios
-            </m.a>
-          </m.div>
+            </a>
+          </div>
 
-          <m.div
-            initial={shouldReduceMotion ? false : { opacity: 0, y: -40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
+          <Anim
+            tag="div"
+            motionProps={{
+              initial: { opacity: 0, y: -18 },
+              whileInView: { opacity: 1, y: 0 },
+              viewport: { once: true, amount: 0.2 },
+              transition: { duration: reduceMotion ? 0 : 0.9 },
+            }}
             onViewportEnter={() => setScheduleStarted(true)}
             className="border-border bg-card-bg mt-12 border"
           >
@@ -107,18 +75,21 @@ export default function Schedule() {
                   Mañana
                 </p>
                 <div className="mt-3 min-h-12 sm:min-h-15">
-                  <AnimatePresence mode="wait" initial={false}>
-                    <m.p
-                      key={morningSchedule}
-                      initial={shouldReduceMotion ? false : { opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={shouldReduceMotion ? undefined : { opacity: 0 }}
-                      transition={{ duration: 0.5, ease: "easeInOut" }}
+                  <Presence>
+                    <Anim
+                      tag="p"
+                      motionProps={{
+                        key: morningSchedule,
+                        initial: { opacity: 0 },
+                        animate: { opacity: 1 },
+                        exit: { opacity: 0 },
+                        transition: { duration: reduceMotion ? 0 : 0.45 },
+                      }}
                       className="font-display text-lime text-4xl font-bold tracking-tight sm:text-5xl"
                     >
                       {morningSchedule}
-                    </m.p>
-                  </AnimatePresence>
+                    </Anim>
+                  </Presence>
                 </div>
               </div>
               <div className="p-6 sm:p-8">
@@ -126,18 +97,21 @@ export default function Schedule() {
                   Tarde
                 </p>
                 <div className="mt-3 min-h-12 sm:min-h-15">
-                  <AnimatePresence mode="wait" initial={false}>
-                    <m.p
-                      key={afternoonSchedule}
-                      initial={shouldReduceMotion ? false : { opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={shouldReduceMotion ? undefined : { opacity: 0 }}
-                      transition={{ duration: 0.5, ease: "easeInOut" }}
+                  <Presence>
+                    <Anim
+                      tag="p"
+                      motionProps={{
+                        key: afternoonSchedule,
+                        initial: { opacity: 0 },
+                        animate: { opacity: 1 },
+                        exit: { opacity: 0 },
+                        transition: { duration: reduceMotion ? 0 : 0.45 },
+                      }}
                       className="font-display text-lime text-4xl font-bold tracking-tight sm:text-5xl"
                     >
                       {afternoonSchedule}
-                    </m.p>
-                  </AnimatePresence>
+                    </Anim>
+                  </Presence>
                 </div>
               </div>
             </div>
@@ -163,7 +137,7 @@ export default function Schedule() {
                 ))}
               </div>
             </div>
-          </m.div>
+          </Anim>
         </div>
       </div>
     </section>
